@@ -7,9 +7,9 @@ class Player {
     }
     fly() {
         if (this.y < 600) {
-            this.y += 10;
-        } else {
             this.y -= 10;
+        } else {
+            this.y += 10;
         }
     }
 }
