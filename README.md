@@ -30,9 +30,9 @@ Minimum user stories:
 ## File structure
 
 - <code>assets.js</code>: loads all audiovisual assets to be used. 
-### <code>player.js</code>: defines player class. Methods: fly(), fall()
-### <code>zapper.js</code>: defines zapper class. Methods: \_definePosition()
-### <code>missile.js</code>: defines missile class. Methods: \_moveLeft(), \_alertPlayer, \_computeSpeed() 
+- <code>player.js</code>: defines player class. Methods: fly(), fall()
+- <code>zapper.js</code>: defines zapper class. Methods: \_definePosition()
+- <code>missile.js</code>: defines missile class. Methods: \_moveLeft(), \_alertPlayer, \_computeSpeed() 
 - <code>game.js</code>: contains all the elements for the game to work. Methods: 
     - start() 
     - \_update()
@@ -45,7 +45,7 @@ Minimum user stories:
     - \_computeMeters()
     - \_drawPlayer()
     - \_clean()
-### <code>scripts.js</code>: contains all the DOM manipulation code to start the game
+- <code>scripts.js</code>: contains all the DOM manipulation code to start the game
 
 ## Useful links
 
