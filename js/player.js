@@ -5,4 +5,11 @@ class Player {
         this.width = width;
         this.height = height;
     }
+    fly() {
+        if (this.y < 600) {
+            this.y += 10;
+        } else {
+            this.y -= 10;
+        }
+    }
 }
