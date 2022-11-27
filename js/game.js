@@ -7,17 +7,16 @@ class Game{
   _assignControls() {
     // Controles del teclado
     document.addEventListener('keydown', (event) => {
-      switch (event.code) {
-        case 'ArrowUp':
-          this.player.fly();
-          break;
-        case 'ArrowDown':
-          //this.player.moveRight();
-          break;
-        default:
-          break;
+      console.log(event.code);
+      if (event.code === 'ArrowUp' || event.code === 'Space') {
+        this.player.fly();
       }
     });
+    document.addEventListener('keyup', (event) => {
+      if (event.code === 'ArrowUp' || event.code === 'Space') {
+        this.player.fall();
+      }
+    })
   }
 
   _drawplayer() {

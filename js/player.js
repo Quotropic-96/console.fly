@@ -12,4 +12,7 @@ class Player {
             this.y += 5;
         }
     }
+    fall() {
+        console.log('falling');
+    }
 }
