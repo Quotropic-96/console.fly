@@ -4,15 +4,18 @@ class Player {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.isFly = false;
     }
     fly() {
         if (this.y > 0) {
             this.y -= 10;
         } else {
-            this.y += 5;
+            this.y += 2;
         }
     }
     fall() {
-        console.log('falling');
+        if (this.y + this.height < 600) {
+            this.y += 10;
+        }
     }
 }

@@ -7,20 +7,25 @@ class Game{
   _assignControls() {
     // Controles del teclado
     document.addEventListener('keydown', (event) => {
-      console.log(event.code);
       if (event.code === 'ArrowUp' || event.code === 'Space') {
-        this.player.fly();
+        this.player.isFly = true;
       }
     });
     document.addEventListener('keyup', (event) => {
       if (event.code === 'ArrowUp' || event.code === 'Space') {
-        this.player.fall();
+        this.player.isFly = false;
       }
     })
   }
 
   _drawplayer() {
     this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
+    if (this.player.isFly) {
+      this.player.fly();
+    }
+    if (!this.player.isFly) {
+      this.player.fall();
+    }
   }
 
   _clean() {
