@@ -1,36 +1,62 @@
 class Zapper {
     constructor() {
-        this.xd = undefined;
-        this.yd = undefined;
-        this.xu = undefined;
-        this.yu = undefined;
-        this.width = 20;
-        this.length = 50;
-        // this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
+        this.possibleOriginZones[0, 1, 2];
+        this.originZone = undefined;
+        this.possibleTiers = [1, 2];
+        this.tier = undefined;
         this.possiblePositions = ['horizontal', 'vertical'];
         this.position = undefined;
+        this.deltaX = undefined;
+        this.deltaY = undefined;
+        this.coordinates = [];
     }
+
+    _defineOriginZone() {
+        this.originZone = this.possibleOriginZones[Math.floor(Math.random()*this.possibleOriginZones.length)];
+    }
+
+    _defineTier() {
+        this.tier = this.possibleTiers[Math.floor(Math.random()*this.possibleTiers.length)];
+    }
+
     _definePosition() {
-        this.length += Math.floor(Math.random()*350);
         this.position = this.possiblePositions[Math.floor(Math.random()*this.possiblePositions.length)];
+    }
+
+    _defineDeltas() {
         switch (this.position) {
             case 'horizontal':
-                this.xd = 1000;
-                this.xu = this.xd + this.length;
-                this.yd = Math.floor(Math.random()*500);
-                this.yu = this.yd;
+                this.deltaX = 190 * this.tier;
+                this.deltaY = 50;
                 break;
-            
             case 'vertical':
-                this.xd = 1000;
-                this.xu = this.xd;
-                this.yd = Math.floor(Math.random()*500);
-                this.yu = this.yd - this.length;
+                this.deltaX = 50;
+                this.deltaY = 190 * this.tier;
                 break;
-
             default:
                 break;
         }
+    }
+
+    _computeCoordinates() {
+        this.coordinates = [
+            {
+                x0: 1000,
+                y0: 200*this.originZone
+            },
+            {
+                x1: 1000 + this.deltaX,
+                y1: 200*this.originZone
+            },
+            {
+                x2: 1000 + this.deltaX,
+                y2: 200 * this.originZone + this.deltaY
+            },
+            {
+                x3: 1000,
+                y3: 200 * this.originZone + this.deltaY
+            }
+        ];
     }
 
     _moveLeft() {
