@@ -37,6 +37,17 @@ class Game{
     }
   }
 
+  _drawZappers() {
+    this.zappers.forEach(zapper => {
+      this.ctx.beginPath();
+      this.ctx.moveTo(zapper.xd, zapper.yd);
+      this.ctx.lineTo(zapper.xu, zapper.yu);
+      this.ctx.lineTo(zapper.xu + zapper.width, zapper.yu);
+      this.ctx.lineTo(zapper.xu + zapper.width, zapper.yd);
+      this.ctx.fill();
+      this.ctx.closePath();
+    })
+  }
   
 
   _clean() {
