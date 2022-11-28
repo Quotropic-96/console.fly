@@ -6,6 +6,7 @@ class Game{
     this.missiles = [];
     this.generateZappersInterval = undefined;
     this.generateMissilesInterval = undefined;
+    this.isCollission = false;
   }
 
   _assignControls() {
@@ -124,9 +125,21 @@ class Game{
     this._drawMissiles();
   }
 
+  _checkCollissions() {
+    // Missile Collision
+    this.missiles.forEach(missile => {
+      if (((this.player.x < missile.x && missile.x < this.player.x+this.player.width)||(this.player.x < missile.x + missile.width && missile.x + missile.width < this.player.x+this.player.width)) 
+      && 
+      ((this.player.y < missile.y && missile.y < this.player.y + this.player.height)||(this.player.y < missile.y + missile.height && missile.y + missile.height< this.player.y + this.player.height))) {
+        console.log('Hit by missile');
+      }
+    });
+  }
+
   _update() {
     this._cleanArrays();
     this._moveAll();
+    this._checkCollissions();
     this._redrawAll();
     window.requestAnimationFrame(() => this._update());
   }
