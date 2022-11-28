@@ -130,15 +130,25 @@ class Game{
       && 
       ((playerY < obstacleY && obstacleY < playerY + playerHeight)||(playerY < obstacleY + obstacleHeight && obstacleY + obstacleHeight< playerY + playerHeight))) {
         console.log('Hit');
-      }
+    } else if (((obstacleX < playerX &&  playerX < obstacleX + obstacleWidth)||(obstacleX < playerX + playerWidth && playerX + playerWidth < obstacleX + obstacleWidth)) 
+      && 
+      ((obstacleY < playerY && playerY < obstacleY + obstacleHeight)||(obstacleY <  playerY + playerHeight && playerY + playerHeight < obstacleY + obstacleHeight))) {
+        console.log('Hit');
+    }
+    
   }
 
   _checkCollissions() {
     // Missile Collision
-    this.missiles.forEach(missile => {
-      this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
-    });
+    // this.missiles.forEach(missile => {
+    //   this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
+    // });
     // Zapper Collision
+    this.zappers.forEach(zapper => {
+      if (zapper.position === 'horizontal' || zapper.position === 'vertical') {
+        this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, zapper.coordinates[0].x, zapper.coordinates[0].y, zapper.deltaX, zapper.deltaY);
+      }
+    });
   }
 
   _update() {
