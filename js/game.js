@@ -36,9 +36,10 @@ class Game{
   _generateMissiles() {
     this.generateMissilesInterval = setInterval(() => {
       const newMissile = new Missile(1000, this.player.y, 50, 50);
+      console.log(newMissile);
       newMissile._alertPlayer();
       this.missiles.push(newMissile);
-    },1000);
+    },2000);
   }
 
   _drawplayer() {
@@ -65,6 +66,7 @@ class Game{
     this.missiles.forEach(missile => {
       this.ctx.fillStyle = missile.color;
       this.ctx.fillRect(missile.x, missile.y, missile.width, missile.height);
+      this.ctx.fillStyle = 'black';
     })
   }
 
@@ -97,6 +99,7 @@ class Game{
   start() {
     this._assignControls();
     this._generateZappers();
+    this._generateMissiles();
     this._update();
   }
 }

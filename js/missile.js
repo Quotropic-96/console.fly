@@ -6,14 +6,14 @@ class Missile {
         this.height = height;
         this.speed = 20;
         this.isAlerting = true;
-        this.color = rgb(255,0,0);
+        this.color = 'red';
     }
 
     _alertPlayer() {
         this.x -= this.width;
         setTimeout(() => {
             this.isAlerting = false;
-            this.color = rgb(0,0,0);
+            this.color = 'black';
         },1000);
     }
 
