@@ -22,8 +22,12 @@ class Game{
   _generateZappers() {
     this.generateZappersInterval = setInterval(() => {
       const newZapper = new Zapper();
+      newZapper._defineOriginZone();
+      newZapper._defineTier();
       newZapper._definePosition();
-      console.log(newZapper.position);
+      newZapper._defineDeltas();
+      newZapper._computeCoordinates();
+      console.log(newZapper);
       this.zappers.push(newZapper);
     },1000);
   }
@@ -41,10 +45,8 @@ class Game{
   _drawZappers() {
     this.zappers.forEach(zapper => {
       this.ctx.beginPath();
-      this.ctx.moveTo(zapper.xd, zapper.yd);
-      this.ctx.lineTo(zapper.xu, zapper.yu);
-      this.ctx.lineTo(zapper.xu + zapper.width, zapper.yu);
-      this.ctx.lineTo(zapper.xu + zapper.width, zapper.yd);
+      this.ctx.moveTo(zapper.coordinates[0].x, zapper.coordinates[0].y);
+      zapper.coordinates.forEach(point => this.ctx.lineTo(point.x,point.y))
       this.ctx.fill();
       this.ctx.closePath();
     })

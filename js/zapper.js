@@ -1,6 +1,6 @@
 class Zapper {
     constructor() {
-        this.possibleOriginZones[0, 1, 2];
+        this.possibleOriginZones = [0, 1, 2];
         this.originZone = undefined;
         this.possibleTiers = [1, 2];
         this.tier = undefined;
@@ -41,28 +41,29 @@ class Zapper {
     _computeCoordinates() {
         this.coordinates = [
             {
-                x0: 1000,
-                y0: 200*this.originZone
+                x: 1000,
+                y: 200*this.originZone
             },
             {
-                x1: 1000 + this.deltaX,
-                y1: 200*this.originZone
+                x: 1000 + this.deltaX,
+                y: 200*this.originZone
             },
             {
-                x2: 1000 + this.deltaX,
-                y2: 200 * this.originZone + this.deltaY
+                x: 1000 + this.deltaX,
+                y: 200 * this.originZone + this.deltaY
             },
             {
-                x3: 1000,
-                y3: 200 * this.originZone + this.deltaY
+                x: 1000,
+                y: 200 * this.originZone + this.deltaY
             }
         ];
     }
 
     _moveLeft() {
-        if (this.xd > 0 || this.xu > 0) {
-            this.xd -= 10;
-            this.xu -= 10;
-        }
+        this.coordinates.forEach(point => {
+            if (point.x + this.deltaX > 0) {
+                point.x -= 10;
+            }
+        })
     }
 }
