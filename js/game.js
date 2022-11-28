@@ -36,7 +36,6 @@ class Game{
   _generateMissiles() {
     this.generateMissilesInterval = setInterval(() => {
       const newMissile = new Missile(1000, this.player.y, 50, 50);
-      console.log(newMissile);
       newMissile._alertPlayer();
       this.missiles.push(newMissile);
     },2000);
@@ -82,12 +81,36 @@ class Game{
     })
   }
 
-  _clean() {
+  _cleanZappers() {
+    this.zappers = this.zappers.filter(zapper => {
+      let isVisible = false;
+      zapper.coordinates.forEach(point => {
+        if (point.x > 0) {
+          isVisible = true;
+        }
+      });
+      return isVisible;
+    });
+  }
+
+  _cleanMissiles() {
+    this.missiles = this.missiles.filter(missile => {
+      let isVisible = false;
+      if (missile.x + missile.width > 0) {
+        isVisible = true;
+      }
+      return isVisible;
+    });
+  }
+
+  _cleanScreen() {
     this.ctx.clearRect(0, 0, 1000, 600);
   }
 
   _update() {
-    this._clean();
+    this._cleanScreen();
+    this._cleanZappers();
+    this._cleanMissiles();
     this._drawplayer();
     this._moveZappers();
     this._moveMissiles();
