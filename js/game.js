@@ -125,15 +125,20 @@ class Game{
     this._drawMissiles();
   }
 
+  _checkSquareHit(playerX, playerY, playerWidth, playerHeight, obstacleX, obstacleY, obstacleWidth, obstacleHeight) {
+    if (((playerX < obstacleX && obstacleX < playerX + playerWidth)||(playerX < obstacleX + obstacleWidth && obstacleX + obstacleWidth < playerX + playerWidth)) 
+      && 
+      ((playerY < obstacleY && obstacleY < playerY + playerHeight)||(playerY < obstacleY + obstacleHeight && obstacleY + obstacleHeight< playerY + playerHeight))) {
+        console.log('Hit');
+      }
+  }
+
   _checkCollissions() {
     // Missile Collision
     this.missiles.forEach(missile => {
-      if (((this.player.x < missile.x && missile.x < this.player.x+this.player.width)||(this.player.x < missile.x + missile.width && missile.x + missile.width < this.player.x+this.player.width)) 
-      && 
-      ((this.player.y < missile.y && missile.y < this.player.y + this.player.height)||(this.player.y < missile.y + missile.height && missile.y + missile.height< this.player.y + this.player.height))) {
-        console.log('Hit by missile');
-      }
+      this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
     });
+    // Zapper Collision
   }
 
   _update() {
