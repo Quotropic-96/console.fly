@@ -4,10 +4,11 @@ class Zapper {
         this.originZone = undefined;
         this.possibleTiers = [1, 2];
         this.tier = undefined;
-        this.possiblePositions = ['horizontal', 'vertical'];
+        this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
         this.position = undefined;
         this.deltaX = undefined;
         this.deltaY = undefined;
+        this.diagonalShift = 0;
         this.coordinates = [];
     }
 
@@ -28,10 +29,22 @@ class Zapper {
             case 'horizontal':
                 this.deltaX = 190 * this.tier;
                 this.deltaY = 50;
+                // Add this line so horizontal zapper appears in the middle of the zone
+                this.originZone += .5;
                 break;
             case 'vertical':
                 this.deltaX = 50;
                 this.deltaY = 190 * this.tier;
+                break;
+            case 'diagonalUp':
+                this.deltaX = 50;
+                this.deltaY = 190 * this.tier;
+                this.diagonalShift = 100;
+                break;
+            case 'diagonalDown':
+                this.deltaX = 50;
+                this.deltaY = 190 * this.tier;
+                this.diagonalShift = -100;
                 break;
             default:
                 break;
@@ -41,19 +54,19 @@ class Zapper {
     _computeCoordinates() {
         this.coordinates = [
             {
-                x: 1000,
+                x: 1100 + this.diagonalShift,
                 y: 200*this.originZone
             },
             {
-                x: 1000 + this.deltaX,
+                x: 1100 + this.deltaX + this.diagonalShift,
                 y: 200*this.originZone
             },
             {
-                x: 1000 + this.deltaX,
+                x: 1100 + this.deltaX,
                 y: 200 * this.originZone + this.deltaY
             },
             {
-                x: 1000,
+                x: 1100,
                 y: 200 * this.originZone + this.deltaY
             }
         ];

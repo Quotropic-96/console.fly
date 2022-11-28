@@ -27,7 +27,6 @@ class Game{
       newZapper._definePosition();
       newZapper._defineDeltas();
       newZapper._computeCoordinates();
-      console.log(newZapper);
       this.zappers.push(newZapper);
     },1000);
   }
