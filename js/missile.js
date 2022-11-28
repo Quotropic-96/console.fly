@@ -5,5 +5,14 @@ class Missile {
         this.width = width;
         this.height = height;
         this.speed;
+        this.isAlerting = true;
+        this.color = rgb(255,0,0);
+    }
+
+    _alertPlayer() {
+        setTimeout(() => {
+            this.isAlerting = false;
+            this.color = rgb(0,0,0);
+        },1000);
     }
 }
