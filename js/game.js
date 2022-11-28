@@ -61,6 +61,13 @@ class Game{
     });
   }
 
+  _drawMissiles() {
+    this.missiles.forEach(missile => {
+      this.ctx.fillStyle = missile.color;
+      this.ctx.fillRect(missile.x, missile.y, missile.width, missile.height);
+    })
+  }
+
   _moveZappers() {
     this.zappers.forEach(zapper => {
       zapper._moveLeft();
