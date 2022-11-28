@@ -37,11 +37,15 @@ class Zapper {
                 this.deltaY = 190 * this.tier;
                 break;
             case 'diagonalUp':
+                // Add this line so diagonal zapper appears with some margin
+                this.originZone += .1;
                 this.deltaX = 50;
                 this.deltaY = 190 * this.tier;
                 this.diagonalShift = 100;
                 break;
             case 'diagonalDown':
+                // Add this line so diagonal zapper appears with some margin
+                this.originZone += .1;
                 this.deltaX = 50;
                 this.deltaY = 190 * this.tier;
                 this.diagonalShift = -100;
