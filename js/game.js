@@ -129,15 +129,15 @@ class Game{
     if (((playerX < obstacleX && obstacleX < playerX + playerWidth)||(playerX < obstacleX + obstacleWidth && obstacleX + obstacleWidth < playerX + playerWidth)) 
       && 
       ((playerY < obstacleY && obstacleY < playerY + playerHeight)||(playerY < obstacleY + obstacleHeight && obstacleY + obstacleHeight< playerY + playerHeight))) {
-        console.log('Hit');
+        this.ctx.fillStyle = 'red';
     } else if (((obstacleX < playerX &&  playerX < obstacleX + obstacleWidth)||(obstacleX < playerX + playerWidth && playerX + playerWidth < obstacleX + obstacleWidth)) 
       && 
       ((obstacleY < playerY && playerY < obstacleY + obstacleHeight)||(obstacleY <  playerY + playerHeight && playerY + playerHeight < obstacleY + obstacleHeight))) {
-        console.log('Hit');
+        this.ctx.fillStyle = 'red';
     }
   }
 
-  _checkDiagonalHit(playerX, playerY, playerWidth, playerHeight, obstacleX0, obstacleY0, deltaY, diagonalShift) {
+  _checkDiagonalHit(playerX, playerY, playerWidth, playerHeight, obstacleX0, obstacleY0, deltaX, deltaY, diagonalShift) {
     // X0 and Y0 are the coordinates of the top left point of the obstacle. 
     // DeltaY: Orthogonal height of the obstacle.
     // diagonalShift: Orthogonal x distance between two points otherwise aligned vertically. Positive for diagonalUp, Negative for diagonalDown
@@ -147,8 +147,8 @@ class Game{
     let y0 = obstacleY0;
     let dy = deltaY/10;
     let dx = diagonalShift/10;
-    while (dy < deltaY) {
-      this._checkSquareHit(playerX, playerY, playerWidth, playerHeight, x0, y0, dx, dy);
+    while (y0 <= obstacleY0 + deltaY) {
+      this._checkSquareHit(playerX, playerY, playerWidth, playerHeight, x0, y0, deltaX, dy);
       x0 += dx;
       y0 += dy;
       dy += deltaY/10;
@@ -165,7 +165,7 @@ class Game{
       if (zapper.position === 'horizontal' || zapper.position === 'vertical') {
         this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, zapper.coordinates[0].x, zapper.coordinates[0].y, zapper.deltaX, zapper.deltaY);
       } else {
-        this._checkDiagonalHit(this.player.x, this.player.y, this.player.width, this.player.height, zapper.coordinates[0].x, zapper.coordinates[0].y, zapper.deltaY, zapper.diagonalShift);
+        this._checkDiagonalHit(this.player.x, this.player.y, this.player.width, this.player.height, zapper.coordinates[0].x, zapper.coordinates[0].y, zapper.deltaX, zapper.deltaY, zapper.diagonalShift);
       }
     });
   }
