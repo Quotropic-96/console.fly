@@ -17,14 +17,14 @@ class Zapper {
             case 'horizontal':
                 this.xd = 1000;
                 this.xu = this.xd + this.length;
-                this.yd = Math.floor(Math.random()*200);
+                this.yd = Math.floor(Math.random()*500);
                 this.yu = this.yd;
                 break;
             
             case 'vertical':
                 this.xd = 1000;
                 this.xu = this.xd;
-                this.yd = Math.floor(Math.random()*200);
+                this.yd = Math.floor(Math.random()*500);
                 this.yu = this.yd - this.length;
                 break;
 
@@ -36,9 +36,7 @@ class Zapper {
     _moveLeft() {
         if (this.xd > 0 || this.xu > 0) {
             this.xd -= 10;
-            this.yd -= 10;
             this.xu -= 10;
-            this.yu -= 10;
         }
     }
 }

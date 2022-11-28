@@ -21,10 +21,11 @@ class Game{
 
   _generateZappers() {
     this.generateZappersInterval = setInterval(() => {
-      newZapper = new Zapper();
-      newZapper.definePosition();
+      const newZapper = new Zapper();
+      newZapper._definePosition();
+      console.log(newZapper.position);
       this.zappers.push(newZapper);
-    },1500);
+    },1000);
   }
 
   _drawplayer() {
@@ -48,7 +49,12 @@ class Game{
       this.ctx.closePath();
     })
   }
-  
+
+  _moveZappers() {
+    this.zappers.forEach(zapper => {
+      zapper._moveLeft();
+    })
+  }
 
   _clean() {
     this.ctx.clearRect(0, 0, 1000, 600);
@@ -57,11 +63,14 @@ class Game{
   _update() {
     this._clean();
     this._drawplayer();
+    this._moveZappers();
+    this._drawZappers();
     window.requestAnimationFrame(() => this._update());
   }
 
   start() {
     this._assignControls();
+    this._generateZappers();
     this._update();
   }
 }
