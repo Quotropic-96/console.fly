@@ -10,6 +10,7 @@ class Missile {
     }
 
     _alertPlayer() {
+        this.x -= this.width;
         setTimeout(() => {
             this.isAlerting = false;
             this.color = rgb(0,0,0);

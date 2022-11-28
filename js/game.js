@@ -3,7 +3,9 @@ class Game{
     this.ctx = context;
     this.player = new Player(150,400,50,100);
     this.zappers = [];
+    this.missiles = [];
     this.generateZappersInterval = undefined;
+    this.generateMissilesInterval = undefined;
   }
 
   _assignControls() {
@@ -31,6 +33,14 @@ class Game{
     },1000);
   }
 
+  _generateMissiles() {
+    this.generateMissilesInterval = setInterval(() => {
+      const newMissile = new Missile(1000, this.player.y, 50, 50);
+      newMissile._alertPlayer();
+      this.missiles.push(newMissile);
+    },1000);
+  }
+
   _drawplayer() {
     this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
     if (this.player.isFly) {
@@ -48,7 +58,7 @@ class Game{
       zapper.coordinates.forEach(point => this.ctx.lineTo(point.x,point.y))
       this.ctx.fill();
       this.ctx.closePath();
-    })
+    });
   }
 
   _moveZappers() {
