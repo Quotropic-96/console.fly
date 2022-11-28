@@ -74,6 +74,12 @@ class Game{
     })
   }
 
+  _moveMissiles() {
+    this.missiles.forEach(missile => {
+      missile._moveLeft();
+    })
+  }
+
   _clean() {
     this.ctx.clearRect(0, 0, 1000, 600);
   }
@@ -82,7 +88,9 @@ class Game{
     this._clean();
     this._drawplayer();
     this._moveZappers();
+    this._moveMissiles();
     this._drawZappers();
+    this._drawMissiles();
     window.requestAnimationFrame(() => this._update());
   }
 
