@@ -103,19 +103,31 @@ class Game{
     });
   }
 
+  _cleanArrays() {
+    this._cleanZappers();
+    this._cleanMissiles();
+  }
+
   _cleanScreen() {
     this.ctx.clearRect(0, 0, 1000, 600);
   }
 
-  _update() {
-    this._cleanScreen();
-    this._cleanZappers();
-    this._cleanMissiles();
-    this._drawplayer();
+  _moveAll() {
     this._moveZappers();
     this._moveMissiles();
+  }
+
+  _redrawAll() {
+    this._cleanScreen();
+    this._drawplayer();
     this._drawZappers();
     this._drawMissiles();
+  }
+
+  _update() {
+    this._cleanArrays();
+    this._moveAll();
+    this._redrawAll();
     window.requestAnimationFrame(() => this._update());
   }
 
