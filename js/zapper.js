@@ -1,14 +1,14 @@
 class Zapper {
     constructor() {
-        this.xd;
-        this.yd;
-        this.xu;
-        this.yu;
+        this.xd = undefined;
+        this.yd = undefined;
+        this.xu = undefined;
+        this.yu = undefined;
         this.width = 20;
         this.length = 50;
         // this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
         this.possiblePositions = ['horizontal', 'vertical'];
-        this.position;
+        this.position = undefined;
     }
     _definePosition() {
         this.length += Math.floor(Math.random()*350);
@@ -27,9 +27,18 @@ class Zapper {
                 this.yd = Math.floor(Math.random()*200);
                 this.yu = this.yd - this.length;
                 break;
-                
+
             default:
                 break;
+        }
+    }
+
+    _moveLeft() {
+        if (this.xd > 0 || this.xu > 0) {
+            this.xd -= 10;
+            this.yd -= 10;
+            this.xu -= 10;
+            this.yu -= 10;
         }
     }
 }
