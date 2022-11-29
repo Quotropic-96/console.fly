@@ -38,6 +38,7 @@ class Game{
         newZapper._definePosition();
         newZapper._defineDeltas();
         newZapper._computeCoordinates();
+        newZapper._computeSpeed(this.dt);
         this.zappers.push(newZapper);
       }
     },1000);

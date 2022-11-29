@@ -84,4 +84,8 @@ class Zapper {
             }
         })
     }
+    
+    _computeSpeed(dt) {
+        this.speed += Math.round(dt/500);
+    }
 }
