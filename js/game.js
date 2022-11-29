@@ -1,5 +1,5 @@
 class Game{
-  constructor(context) {
+  constructor(context, metersHTML) {
     this.ctx = context;
     this.player = new Player(150,400,50,100);
     this.zappers = [];
@@ -7,6 +7,9 @@ class Game{
     this.generateZappersInterval = undefined;
     this.generateMissilesInterval = undefined;
     this.isCollission = false;
+    this.metersHTML = metersHTML;
+    this.dt = 0;
+    this.meters = 0;
   }
 
   _assignControls() {
@@ -42,7 +45,7 @@ class Game{
     },2000);
   }
 
-  _drawplayer() {
+  _drawPlayer() {
     this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
     if (this.player.isFly) {
       this.player.fly();
@@ -120,7 +123,7 @@ class Game{
 
   _redrawAll() {
     this._cleanScreen();
-    this._drawplayer();
+    this._drawPlayer();
     this._drawZappers();
     this._drawMissiles();
   }
@@ -155,10 +158,10 @@ class Game{
   }
 
   _checkCollissions() {
-    // // Missile Collision
-    // this.missiles.forEach(missile => {
-    //   this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
-    // });
+    // Missile Collision
+    this.missiles.forEach(missile => {
+      this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
+    });
     // Zapper Collision
     this.zappers.forEach(zapper => {
       if (zapper.position === 'horizontal' || zapper.position === 'vertical') {
@@ -169,11 +172,22 @@ class Game{
     });
   }
 
+  _computeMeters() {
+    this.dt += 1;
+    this.meters = Math.round(this.dt/10);
+  }
+
+  _displayMeters() {
+    this.metersHTML.innerHTML = `${this.meters}`;
+  }
+
   _update() {
     this._cleanArrays();
     this._moveAll();
     this._checkCollissions();
     this._redrawAll();
+    this._computeMeters();
+    this._displayMeters();
     window.requestAnimationFrame(() => this._update());
   }
 

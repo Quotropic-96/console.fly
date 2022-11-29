@@ -31,6 +31,14 @@ canvas {
   margin-bottom: 50px;
 }
 
+#meters-count {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 40px;
+  left: 50px;
+}
+
 /* Auxiliar classes */
 
 .hidden {
