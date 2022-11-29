@@ -10,6 +10,7 @@ class Zapper {
         this.deltaY = undefined;
         this.diagonalShift = 0;
         this.coordinates = [];
+        this.speed = 10;
     }
 
     _defineOriginZone() {
@@ -79,7 +80,7 @@ class Zapper {
     _moveLeft() {
         this.coordinates.forEach(point => {
             if (point.x + this.deltaX > 0) {
-                point.x -= 10;
+                point.x -= this.speed;
             }
         })
     }

@@ -22,4 +22,8 @@ class Missile {
             this.x -= this.speed;
         }
     }
+
+    _computeSpeed(dt) {
+        this.speed += Math.round(dt/500);
+    }
 }
