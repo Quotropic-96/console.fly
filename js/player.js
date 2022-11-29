@@ -6,18 +6,25 @@ class Player {
         this.height = height;
         this.isFly = false;
         this.isFall = false;
-        this.accelerationCount = 1;
-        this.gravity = 3;
+        this.fallCount = 1;
+        this.flyCount = 1;
+        this.gravity = 4;
+        this.acceleration = 2;
     }
     fly() {
         this.isFall = false;
-        this.accelerationCount = 1;
-        if (this.y > 0) {
-            this.y -= 10;
+        this.fallCount = 1;
+        let yIncrement = 0.5*this.acceleration*(2*this.flyCount-1);
+        if (this.y - yIncrement > 0) {
+            this.y -= yIncrement;
+        } else {
+            this.y = 0;
         }
+        this._flyCount();
     }
     fall() {
-        let yIncrement = 0.5*this.gravity*(2*this.accelerationCount-1);
+        this.flyCount = 1;
+        let yIncrement = 0.5*this.gravity*(2*this.fallCount-1);
         if (this.y + this.height + yIncrement < 600) {
             this.isFall = true;
             this.y += yIncrement;
@@ -29,9 +36,16 @@ class Player {
     }
     _fallCount() {
         if (this.isFall) {
-            this.accelerationCount += 1;
+            this.fallCount += 1;
         } else {
-            this.accelerationCount = 1;
+            this.fallCount = 1;
+        }
+    }
+    _flyCount() {
+        if (this.isFly) {
+            this.flyCount += 1;
+        } else {
+            this.flyCount = 1;
         }
     }
 }
