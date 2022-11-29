@@ -131,13 +131,13 @@ class Game{
   }
 
   _checkSquareHit(playerX, playerY, playerWidth, playerHeight, obstacleX, obstacleY, obstacleWidth, obstacleHeight) {
-    if (((playerX < obstacleX && obstacleX < playerX + playerWidth)||(playerX < obstacleX + obstacleWidth && obstacleX + obstacleWidth < playerX + playerWidth)) 
+    if (((playerX <= obstacleX && obstacleX <= playerX + playerWidth)||(playerX <= obstacleX + obstacleWidth && obstacleX + obstacleWidth <= playerX + playerWidth)) 
       && 
-      ((playerY < obstacleY && obstacleY < playerY + playerHeight)||(playerY < obstacleY + obstacleHeight && obstacleY + obstacleHeight< playerY + playerHeight))) {
+      ((playerY <= obstacleY && obstacleY <= playerY + playerHeight)||(playerY <= obstacleY + obstacleHeight && obstacleY + obstacleHeight <= playerY + playerHeight))) {
         this.ctx.fillStyle = 'red';
-    } else if (((obstacleX < playerX &&  playerX < obstacleX + obstacleWidth)||(obstacleX < playerX + playerWidth && playerX + playerWidth < obstacleX + obstacleWidth)) 
+    } else if (((obstacleX <= playerX &&  playerX <= obstacleX + obstacleWidth)||(obstacleX <= playerX + playerWidth && playerX + playerWidth <= obstacleX + obstacleWidth)) 
       && 
-      ((obstacleY < playerY && playerY < obstacleY + obstacleHeight)||(obstacleY <  playerY + playerHeight && playerY + playerHeight < obstacleY + obstacleHeight))) {
+      ((obstacleY <= playerY && playerY <= obstacleY + obstacleHeight)||(obstacleY <=  playerY + playerHeight && playerY + playerHeight <= obstacleY + obstacleHeight))) {
         this.ctx.fillStyle = 'red';
     }
   }
@@ -185,7 +185,7 @@ class Game{
   }
 
   _displayMeters() {
-    this.metersHTML.innerHTML = `meters: ${Math.round(this.meters)} \nspeed: ${this.speed}\ndt: ${this.dt}`;
+    this.metersHTML.innerHTML = `${Math.round(this.meters)}`;
   }
 
   _update() {
