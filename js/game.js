@@ -5,7 +5,9 @@ class Game{
     this.zappers = [];
     this.missiles = [];
     this.generateZappersInterval = undefined;
+    this.zapperGenerationProbability = 10000;   // Time in centi seconds when a new zapper will appear every second
     this.generateMissilesInterval = undefined;
+    this.missileGenerationProbability = 100000;
     this.isCollission = false;
     this.metersHTML = metersHTML;
     this.dt = 0;
@@ -29,13 +31,15 @@ class Game{
 
   _generateZappers() {
     this.generateZappersInterval = setInterval(() => {
-      const newZapper = new Zapper();
-      newZapper._defineOriginZone();
-      newZapper._defineTier();
-      newZapper._definePosition();
-      newZapper._defineDeltas();
-      newZapper._computeCoordinates();
-      this.zappers.push(newZapper);
+      if (Math.random()*this.zapperGenerationProbability < this.dt){
+        const newZapper = new Zapper();
+        newZapper._defineOriginZone();
+        newZapper._defineTier();
+        newZapper._definePosition();
+        newZapper._defineDeltas();
+        newZapper._computeCoordinates();
+        this.zappers.push(newZapper);
+      }
     },1000);
   }
 
@@ -185,7 +189,7 @@ class Game{
   }
 
   _displayMeters() {
-    this.metersHTML.innerHTML = `${Math.round(this.meters)}`;
+    this.metersHTML.innerHTML = `${Math.round(this.meters)} . dt: ${this.dt}`;
   }
 
   _update() {
