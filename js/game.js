@@ -56,7 +56,7 @@ class Game{
     this.zappers.forEach(zapper => {
       this.ctx.beginPath();
       this.ctx.moveTo(zapper.coordinates[0].x, zapper.coordinates[0].y);
-      zapper.coordinates.forEach(point => this.ctx.lineTo(point.x,point.y))
+      zapper.coordinates.forEach(point => this.ctx.lineTo(point.x,point.y));
       this.ctx.fill();
       this.ctx.closePath();
     });
@@ -143,15 +143,14 @@ class Game{
     // diagonalShift: Orthogonal x distance between two points otherwise aligned vertically. Positive for diagonalUp, Negative for diagonalDown
     
     // Split diagonal object into 10 small rectangles
-    let x0 = obstacleX0;
+    let x0 = obstacleX0 + deltaX * 0.1 * (-1) * diagonalShift/Math.abs(diagonalShift);
     let y0 = obstacleY0;
     let dy = deltaY/10;
-    let dx = diagonalShift/10;
-    while (y0 <= obstacleY0 + deltaY) {
+    let dx = - diagonalShift/10;
+    while (y0 < obstacleY0 + deltaY) {
       this._checkSquareHit(playerX, playerY, playerWidth, playerHeight, x0, y0, deltaX, dy);
       x0 += dx;
       y0 += dy;
-      dy += deltaY/10;
     }
   }
 
