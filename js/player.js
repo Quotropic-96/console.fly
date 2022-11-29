@@ -9,8 +9,6 @@ class Player {
     fly() {
         if (this.y > 0) {
             this.y -= 10;
-        } else {
-            this.y += 2;
         }
     }
     fall() {

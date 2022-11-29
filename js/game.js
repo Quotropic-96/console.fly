@@ -55,12 +55,6 @@ class Game{
 
   _drawPlayer() {
     this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
-    if (this.player.isFly) {
-      this.player.fly();
-    }
-    if (!this.player.isFly) {
-      this.player.fall();
-    }
   }
 
   _drawZappers() {
@@ -79,6 +73,15 @@ class Game{
       this.ctx.fillRect(missile.x, missile.y, missile.width, missile.height);
       this.ctx.fillStyle = 'black';
     })
+  }
+
+  _movePlayer() {
+    if (this.player.isFly) {
+      this.player.fly();
+    }
+    if (!this.player.isFly) {
+      this.player.fall();
+    }
   }
 
   _moveZappers() {
@@ -127,6 +130,7 @@ class Game{
   _moveAll() {
     this._moveZappers();
     this._moveMissiles();
+    this._movePlayer();
   }
 
   _redrawAll() {
