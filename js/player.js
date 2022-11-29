@@ -5,32 +5,33 @@ class Player {
         this.width = width;
         this.height = height;
         this.isFly = false;
-        this.isFalling = false;
-        this.fallCount = 1;
+        this.isFall = false;
+        this.accelerationCount = 1;
+        this.gravity = 3;
     }
     fly() {
-        this.isFalling = false;
-        this.fallCount = 1;
+        this.isFall = false;
+        this.accelerationCount = 1;
         if (this.y > 0) {
             this.y -= 10;
         }
     }
     fall() {
-        let yIncrement = 0.5*3*(2*this.fallCount-1);
+        let yIncrement = 0.5*this.gravity*(2*this.accelerationCount-1);
         if (this.y + this.height + yIncrement < 600) {
-            this.isFalling = true;
+            this.isFall = true;
             this.y += yIncrement;
         } else {
             this.y = 600 - this.height;
-            this.isFalling = false;
+            this.isFall = false;
         }
         this._fallCount();
     }
     _fallCount() {
-        if (this.isFalling) {
-            this.fallCount += 1;
+        if (this.isFall) {
+            this.accelerationCount += 1;
         } else {
-            this.fallCount = 1;
+            this.accelerationCount = 1;
         }
     }
 }

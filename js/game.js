@@ -195,7 +195,7 @@ class Game{
   }
 
   _displayMeters() {
-    this.metersHTML.innerHTML = `${Math.round(this.meters)} . dt: ${this.dt}`;
+    this.metersHTML.innerHTML = `${Math.round(this.meters)}`;
   }
 
   _update() {
