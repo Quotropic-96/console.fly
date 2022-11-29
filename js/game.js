@@ -10,6 +10,8 @@ class Game{
     this.metersHTML = metersHTML;
     this.dt = 0;
     this.meters = 0;
+    this.computeSpeedInterval = undefined;
+    this.speed = .1;
   }
 
   _assignControls() {
@@ -174,11 +176,16 @@ class Game{
 
   _computeMeters() {
     this.dt += 1;
-    this.meters = Math.round(this.dt/10);
+    this.meters += 0.5*0.1*(this.dt/600);
+    //this.meters = Math.round(this.meters);
+  }
+
+  _computeSpeed() {
+    this.computeSpeedInterval = setInterval(() => this.speed += 0.1, 1000);
   }
 
   _displayMeters() {
-    this.metersHTML.innerHTML = `${this.meters}`;
+    this.metersHTML.innerHTML = `meters: ${Math.round(this.meters)} \nspeed: ${this.speed}\ndt: ${this.dt}`;
   }
 
   _update() {
@@ -195,6 +202,7 @@ class Game{
     this._assignControls();
     this._generateZappers();
     this._generateMissiles();
+    this._computeSpeed();
     this._update();
   }
 }
