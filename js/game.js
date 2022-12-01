@@ -75,6 +75,19 @@ class Game{
     })
   }
 
+  _parallaxAnimation(img) {
+    let dx = 0;
+    setInterval(() => {
+      if (dx === 1000) {
+        dx = 0;
+      }
+      console.log(dx);
+      this.ctx.drawImage(img, 0 - dx, 0, 1000, 600);
+      this.ctx.drawImage(img, 1000 - dx, 0, 1000, 600);
+      dx++;
+    },40);
+  }
+
   _drawBackground() {
     this.ctx.drawImage(bgImg1, 0, 0, 1000, 600);
     this.ctx.drawImage(bgImg2, 0, 0, 1000, 600);
@@ -237,6 +250,7 @@ class Game{
     this._generateZappers();
     this._generateMissiles();
     this._computeMeters();
+    //this._parallaxAnimation(bgImg1);
     this._update();
   }
 
