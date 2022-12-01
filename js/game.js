@@ -14,6 +14,7 @@ class Game{
     this.meters = 0;
     this.computeSpeedInterval = undefined;
     this.speed = .1;
+    this.gameOver = false;
   }
 
   _assignControls() {
@@ -146,10 +147,12 @@ class Game{
       && 
       ((playerY <= obstacleY && obstacleY <= playerY + playerHeight)||(playerY <= obstacleY + obstacleHeight && obstacleY + obstacleHeight <= playerY + playerHeight))) {
         this.ctx.fillStyle = 'red';
+        this.gameOver = true;
     } else if (((obstacleX <= playerX &&  playerX <= obstacleX + obstacleWidth)||(obstacleX <= playerX + playerWidth && playerX + playerWidth <= obstacleX + obstacleWidth)) 
       && 
       ((obstacleY <= playerY && playerY <= obstacleY + obstacleHeight)||(obstacleY <=  playerY + playerHeight && playerY + playerHeight <= obstacleY + obstacleHeight))) {
         this.ctx.fillStyle = 'red';
+        this.gameOver = true;
     }
   }
 
@@ -188,11 +191,6 @@ class Game{
   _computeMeters() {
     this.dt += 1;
     this.meters += 0.5*0.1*(this.dt/600);
-    //this.meters = Math.round(this.meters);
-  }
-
-  _computeSpeed() {
-    this.computeSpeedInterval = setInterval(() => this.speed += 0.1, 1000);
   }
 
   _displayMeters() {
@@ -206,6 +204,7 @@ class Game{
     this._redrawAll();
     this._computeMeters();
     this._displayMeters();
+    this._checkGameOver();
     window.requestAnimationFrame(() => this._update());
   }
 
@@ -213,7 +212,14 @@ class Game{
     this._assignControls();
     this._generateZappers();
     this._generateMissiles();
-    this._computeSpeed();
     this._update();
+  }
+
+  _checkGameOver() {
+    if (this.gameOver) {
+      clearInterval(this.generateMissilesInterval);
+      clearInterval(this.generateZappersInterval);
+      console.log(this.gameOver);
+    }
   }
 }
