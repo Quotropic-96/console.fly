@@ -4,6 +4,7 @@ class Player {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.floorHeight = 550;
         this.isFly = false;
         this.isFall = false;
         this.fallCount = 1;
@@ -25,11 +26,11 @@ class Player {
     fall() {
         this.flyCount = 1;
         let yIncrement = 0.5*this.gravity*(2*this.fallCount-1);
-        if (this.y + this.height + yIncrement < 600) {
+        if (this.y + this.height + yIncrement < this.floorHeight) {
             this.isFall = true;
             this.y += yIncrement;
         } else {
-            this.y = 600 - this.height;
+            this.y = this.floorHeight - this.height;
             this.isFall = false;
         }
         this._fallCount();
