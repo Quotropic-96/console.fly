@@ -12,8 +12,7 @@ class Game{
     this.metersHTML = metersHTML;
     this.dt = 0;
     this.meters = 0;
-    this.computeSpeedInterval = undefined;
-    this.speed = .1;
+    this.computeMetersInterval = undefined;
     this.gameOver = false;
   }
 
@@ -77,11 +76,13 @@ class Game{
   }
 
   _movePlayer() {
-    if (this.player.isFly) {
-      this.player.fly();
-    }
-    if (!this.player.isFly) {
-      this.player.fall();
+    if (!this.gameOver) {
+      if (this.player.isFly) {
+        this.player.fly();
+      }
+      if (!this.player.isFly) {
+        this.player.fall();
+      }
     }
   }
 
@@ -96,6 +97,12 @@ class Game{
       missile._followPlayerWhenAlert(this.player.y);
       missile._moveLeft();
     })
+  }
+
+  _moveAll() {
+    this._moveZappers();
+    this._moveMissiles();
+    this._movePlayer();
   }
 
   _cleanZappers() {
@@ -127,12 +134,6 @@ class Game{
 
   _cleanScreen() {
     this.ctx.clearRect(0, 0, 1000, 600);
-  }
-
-  _moveAll() {
-    this._moveZappers();
-    this._moveMissiles();
-    this._movePlayer();
   }
 
   _redrawAll() {
@@ -189,12 +190,19 @@ class Game{
   }
 
   _computeMeters() {
-    this.dt += 1;
-    this.meters += 0.5*0.1*(this.dt/600);
+    this.computeMetersInterval = setInterval(() => {
+      this.dt += 1;
+      this.meters += 0.5*0.1*(this.dt/6000);
+    })
   }
 
   _displayMeters() {
     this.metersHTML.innerHTML = `${Math.round(this.meters)}`;
+  }
+
+  _freezeGame() {
+    this.missiles.forEach(missile => missile.speed = 0);
+    this.zappers.forEach(zapper => zapper.speed = 0);
   }
 
   _update() {
@@ -202,7 +210,6 @@ class Game{
     this._moveAll();
     this._checkCollissions();
     this._redrawAll();
-    this._computeMeters();
     this._displayMeters();
     this._checkGameOver();
     window.requestAnimationFrame(() => this._update());
@@ -212,13 +219,16 @@ class Game{
     this._assignControls();
     this._generateZappers();
     this._generateMissiles();
+    this._computeMeters();
     this._update();
   }
 
   _checkGameOver() {
     if (this.gameOver) {
+      this._freezeGame();
       clearInterval(this.generateMissilesInterval);
       clearInterval(this.generateZappersInterval);
+      clearInterval(this.computeMetersInterval);
       console.log(this.gameOver);
     }
   }
