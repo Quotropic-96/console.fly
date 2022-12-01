@@ -92,6 +92,7 @@ class Game{
 
   _moveMissiles() {
     this.missiles.forEach(missile => {
+      missile._followPlayerWhenAlert(this.player.y);
       missile._moveLeft();
     })
   }

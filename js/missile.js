@@ -17,6 +17,12 @@ class Missile {
         },1000);
     }
 
+    _followPlayerWhenAlert(playerY) {
+        if (this.isAlerting && playerY != this.y) {
+            this.y += Math.abs(playerY - this.y)/(playerY - this.y)*5;
+        }
+    }
+
     _moveLeft() {
         if (!this.isAlerting && this.x + this.width > 0) {
             this.x -= this.speed;
