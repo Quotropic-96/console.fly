@@ -75,6 +75,25 @@ class Game{
     })
   }
 
+  _drawBackground() {
+    this.ctx.drawImage(bgImg1, 0, 0, 1000, 600);
+    this.ctx.drawImage(bgImg2, 0, 0, 1000, 600);
+    this.ctx.drawImage(bgImg3, 0, 200, 1000, 400);
+  }
+
+  _drawFloor() {
+    this.ctx.drawImage(floor, 0, 550, 1000, 50);
+  }
+
+  _redrawAll() {
+    this._cleanScreen();
+    this._drawBackground();
+    this._drawFloor();
+    this._drawPlayer();
+    this._drawZappers();
+    this._drawMissiles();
+  }
+
   _movePlayer() {
     if (!this.gameOver) {
       if (this.player.isFly) {
@@ -134,13 +153,6 @@ class Game{
 
   _cleanScreen() {
     this.ctx.clearRect(0, 0, 1000, 600);
-  }
-
-  _redrawAll() {
-    this._cleanScreen();
-    this._drawPlayer();
-    this._drawZappers();
-    this._drawMissiles();
   }
 
   _checkSquareHit(playerX, playerY, playerWidth, playerHeight, obstacleX, obstacleY, obstacleWidth, obstacleHeight) {
@@ -235,7 +247,6 @@ class Game{
       clearInterval(this.generateMissilesInterval);
       clearInterval(this.generateZappersInterval);
       clearInterval(this.computeMetersInterval);
-      console.log(this.gameOver);
     }
   }
 }
