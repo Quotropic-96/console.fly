@@ -96,3 +96,6 @@ const missile4 = new Image();
 missile4.src = '../assets/missile/missile_4.png';
 
 missileMoveLeft = [missile0, missile1, missile2, missile3, missile4];
+
+// Zappers
+const zap0 = new Image()
