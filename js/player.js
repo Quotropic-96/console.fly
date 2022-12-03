@@ -1,5 +1,6 @@
 class Player {
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, runAnimation, ctx) {
+        this.ctx = ctx;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -11,6 +12,8 @@ class Player {
         this.flyCount = 1;
         this.gravity = 4;
         this.acceleration = 2;
+        this.runAnimation = runAnimation;
+        this.runCount = 0;
     }
     fly() {
         this.isFall = false;
@@ -48,5 +51,13 @@ class Player {
         } else {
             this.flyCount = 1;
         }
+    }
+
+    _animatePlayerRun() {
+        if (this.runCount == 60) {
+            this.runCount = 0;
+        }
+        this.ctx.drawImage(this.runAnimation[Math.floor(this.runCount/10)], this.x, this.y, this.width, this.height);
+        this.runCount++;
     }
 }

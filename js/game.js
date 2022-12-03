@@ -1,7 +1,7 @@
 class Game{
   constructor(context, metersHTML) {
     this.ctx = context;
-    this.player = new Player(150,400,50,100);
+    this.player = new Player(150,400,150,150, playerRun, this.ctx);
     this.zappers = [];
     this.missiles = [];
     this.bgLayers = [];
@@ -56,7 +56,8 @@ class Game{
   }
 
   _drawPlayer() {
-    this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
+    // this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
+    this.player._animatePlayerRun();
   }
 
   _drawZappers() {
