@@ -10,8 +10,8 @@ class Player {
         this.isFall = false;
         this.fallCount = 1;
         this.flyCount = 1;
-        this.gravity = 4;
-        this.acceleration = 2;
+        this.gravity = 2;
+        this.acceleration = 1;
         this.runAnimation = runAnimation;
         this.runCount = 0;
         this.jumpAnimation = jumpAnimation;

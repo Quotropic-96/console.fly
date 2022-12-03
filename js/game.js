@@ -1,7 +1,7 @@
 class Game{
   constructor(context, metersHTML) {
     this.ctx = context;
-    this.player = new Player(150,400,150,150, playerRun, playerJump, playerFly, playerFall, this.ctx);
+    this.player = new Player(150,400,80,112, playerRun, playerJump, playerFly, playerFall, this.ctx);
     this.zappers = [];
     this.missiles = [];
     this.bgLayers = [];
@@ -87,6 +87,7 @@ class Game{
 
   _drawBackground() {
     this.bgLayers.forEach(layer => layer._parallaxAnimate());
+    console.log(this.bgLayers[1].speed);
   }
 
   _drawFloor() {
