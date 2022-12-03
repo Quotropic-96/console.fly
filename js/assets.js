@@ -54,3 +54,18 @@ const playerJump3 = new Image();
 playerJump3.src = '../assets/player/jump_3.png';
 
 const playerJump = [playerJump0, playerJump1, playerJump2, playerJump3];
+
+//       Fly
+const playerFly0 = new Image();
+playerFly0.src = '../assets/player/fly_0.png';
+
+const playerFly1 = new Image();
+playerFly1.src = '../assets/player/fly_1.png';
+
+const playerFly2 = new Image();
+playerFly2.src = '../assets/player/fly_2.png';
+
+const playerFly3 = new Image();
+playerFly3.src = '../assets/player/fly_3.png';
+
+const playerFly = [playerFly0, playerFly1, playerFly2, playerFly3];
