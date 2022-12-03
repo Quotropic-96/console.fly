@@ -4,6 +4,7 @@ class Game{
     this.player = new Player(150,400,50,100);
     this.zappers = [];
     this.missiles = [];
+    this.bgLayers = [];
     this.generateZappersInterval = undefined;
     this.zapperGenerationProbability = 10000;   // Time in centi seconds when a new zapper will appear every second
     this.generateMissilesInterval = undefined;
@@ -75,27 +76,16 @@ class Game{
     })
   }
 
-  _parallaxAnimation(img) {
-    let dx = 0;
-    setInterval(() => {
-      if (dx === 1000) {
-        dx = 0;
-      }
-      console.log(dx);
-      this.ctx.drawImage(img, 0 - dx, 0, 1000, 600);
-      this.ctx.drawImage(img, 1000 - dx, 0, 1000, 600);
-      dx++;
-    },40);
-  }
-
   _drawBackground() {
-    this.ctx.drawImage(bgImg1, 0, 0, 1000, 600);
-    this.ctx.drawImage(bgImg2, 0, 0, 1000, 600);
-    this.ctx.drawImage(bgImg3, 0, 200, 1000, 400);
+    this.bgLayers.forEach(layer => layer._parallaxAnimate());
+    // this._parallaxAnimation(bgImg0, 0);
+    // this._parallaxAnimation(bgImg1, 1);
+    // this._parallaxAnimation(bgImg2, 2);
+    // this._parallaxAnimation(bgImg3, 3);
   }
 
   _drawFloor() {
-    this.ctx.drawImage(floor, 0, 550, 1000, 50);
+    this.ctx.drawImage(floor, 0, 0, 1000, 600);
   }
 
   _redrawAll() {
@@ -250,7 +240,10 @@ class Game{
     this._generateZappers();
     this._generateMissiles();
     this._computeMeters();
-    //this._parallaxAnimation(bgImg1);
+    bg.forEach((img,idx) => {
+      let newLayer = new Layer(this.ctx, idx, img);
+      this.bgLayers.push(newLayer);
+    })
     this._update();
   }
 
