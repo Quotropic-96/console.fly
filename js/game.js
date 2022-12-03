@@ -1,7 +1,7 @@
 class Game{
   constructor(context, metersHTML) {
     this.ctx = context;
-    this.player = new Player(150,400,150,150, playerRun, playerJump, playerFly, this.ctx);
+    this.player = new Player(150,400,150,150, playerRun, playerJump, playerFly, playerFall, this.ctx);
     this.zappers = [];
     this.missiles = [];
     this.bgLayers = [];
@@ -60,6 +60,8 @@ class Game{
     if (this.player.isFly) {
       this.player._animatePlayerJump();
       this.player._animatePlayerFly();
+    } else if (this.player.isFall) {
+      this.player._animatePlayerFall();
     } else {
       this.player._animatePlayerRun();
     }

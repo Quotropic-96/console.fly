@@ -69,3 +69,12 @@ const playerFly3 = new Image();
 playerFly3.src = '../assets/player/fly_3.png';
 
 const playerFly = [playerFly0, playerFly1, playerFly2, playerFly3];
+
+//      Fall
+const playerFall0 = new Image();
+playerFall0.src = '../assets/player/fall_0.png';
+
+const playerFall1 = new Image();
+playerFall1.src = '../assets/player/fall_1.png';
+
+const playerFall = [playerFall0, playerFall1];

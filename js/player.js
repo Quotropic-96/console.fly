@@ -1,5 +1,5 @@
 class Player {
-    constructor(x, y, width, height, runAnimation, jumpAnimation, flyAnimation, ctx) {
+    constructor(x, y, width, height, runAnimation, jumpAnimation, flyAnimation, fallAnimation, ctx) {
         this.ctx = ctx;
         this.x = x;
         this.y = y;
@@ -18,6 +18,8 @@ class Player {
         this.jumpCount = 0;
         this.flyAnimation = flyAnimation;
         this.flyAnimationCount = 0;
+        this.fallAnimation = fallAnimation;
+        this.fallAnimationCount = 0;
     }
     fly() {
         this.isFall = false;
@@ -80,5 +82,13 @@ class Player {
             this.ctx.drawImage(this.flyAnimation[Math.floor(this.flyAnimationCount/10)], this.x, this.y, this.width, this.height);
             this.flyAnimationCount++;
         }
+    }
+
+    _animatePlayerFall() {
+        if (this.fallAnimationCount >= 10) {
+            this.fallAnimationCount = 0;
+        } 
+        this.ctx.drawImage(this.fallAnimation[Math.floor(this.fallAnimationCount/5)], this.x, this.y, this.width, this.height);
+        this.fallAnimationCount++;
     }
 }
