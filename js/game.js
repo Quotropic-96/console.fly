@@ -49,7 +49,7 @@ class Game{
 
   _generateMissiles() {
     this.generateMissilesInterval = setInterval(() => {
-      const newMissile = new Missile(1000, this.player.y, 50, 50, missileMoveLeft, this.ctx);
+      const newMissile = new Missile(1000, this.player.y, 100, 50, missileMoveLeft, this.ctx);
       newMissile._alertPlayer();
       newMissile._computeSpeed(this.dt);
       this.missiles.push(newMissile);

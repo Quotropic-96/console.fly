@@ -68,14 +68,14 @@ class Player {
     }
 
     _animatePlayerJump() {
-        if (this.isFly && this.jumpCount < 8) {
-            this.ctx.drawImage(this.jumpAnimation[Math.floor(this.jumpCount/2)], this.x, this.y, this.width, this.height);
+        if (this.isFly && this.jumpCount < 20) {
+            this.ctx.drawImage(this.jumpAnimation[Math.floor(this.jumpCount/5)], this.x, this.y, this.width, this.height);
             this.jumpCount++;
         }
     }
 
     _animatePlayerFly() {
-        if (this.isFly && this.jumpCount >= 8) {
+        if (this.isFly && this.jumpCount >= 20) {
             if (this.flyAnimationCount > 30) {
                 this.flyAnimationCount = 0;
             }
