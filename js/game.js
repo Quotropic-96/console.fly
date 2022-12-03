@@ -5,6 +5,7 @@ class Game{
     this.zappers = [];
     this.missiles = [];
     this.bgLayers = [];
+    this.bgFloor = undefined;
     this.generateZappersInterval = undefined;
     this.zapperGenerationProbability = 10000;   // Time in centi seconds when a new zapper will appear every second
     this.generateMissilesInterval = undefined;
@@ -78,14 +79,11 @@ class Game{
 
   _drawBackground() {
     this.bgLayers.forEach(layer => layer._parallaxAnimate());
-    // this._parallaxAnimation(bgImg0, 0);
-    // this._parallaxAnimation(bgImg1, 1);
-    // this._parallaxAnimation(bgImg2, 2);
-    // this._parallaxAnimation(bgImg3, 3);
   }
 
   _drawFloor() {
-    this.ctx.drawImage(floor, 0, 0, 1000, 600);
+    this.bgFloor._parallaxAnimate();
+    //this.ctx.drawImage(floor, 0, 0, 1000, 600);
   }
 
   _redrawAll() {
@@ -218,6 +216,8 @@ class Game{
   _freezeGame() {
     this.missiles.forEach(missile => missile.speed = 0);
     this.zappers.forEach(zapper => zapper.speed = 0);
+    this.bgLayers.forEach(layer => layer.isFreeze = true);
+    this.bgFloor.isFreeze = true;
   }
 
   _drawLoseText() {
@@ -244,6 +244,7 @@ class Game{
       let newLayer = new Layer(this.ctx, idx, img);
       this.bgLayers.push(newLayer);
     })
+    this.bgFloor = new Layer(this.ctx, 3, floor);
     this._update();
   }
 
