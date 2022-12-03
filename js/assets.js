@@ -18,6 +18,8 @@ const floor = new Image();
 floor.src = '../assets/bg/floor.png';
 
 // Player
+
+//      Run
 const playerRun0 = new Image();
 playerRun0.src = '../assets/player/run_0.png';
 
@@ -37,3 +39,18 @@ const playerRun5 = new Image();
 playerRun5.src = '../assets/player/run_5.png';
 
 const playerRun = [playerRun0, playerRun1, playerRun2, playerRun3, playerRun4, playerRun5];
+
+//      Jump
+const playerJump0 = new Image();
+playerJump0.src = '../assets/player/jump_0.png';
+
+const playerJump1 = new Image();
+playerJump1.src = '../assets/player/jump_1.png';
+
+const playerJump2 = new Image();
+playerJump2.src = '../assets/player/jump_2.png';
+
+const playerJump3 = new Image();
+playerJump3.src = '../assets/player/jump_3.png';
+
+const playerJump = [playerJump0, playerJump1, playerJump2, playerJump3];

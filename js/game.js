@@ -1,7 +1,7 @@
 class Game{
   constructor(context, metersHTML) {
     this.ctx = context;
-    this.player = new Player(150,400,150,150, playerRun, this.ctx);
+    this.player = new Player(150,400,150,150, playerRun, playerJump, this.ctx);
     this.zappers = [];
     this.missiles = [];
     this.bgLayers = [];
@@ -27,6 +27,7 @@ class Game{
     document.addEventListener('keyup', (event) => {
       if (event.code === 'ArrowUp' || event.code === 'Space') {
         this.player.isFly = false;
+        this.player.jumpCount = 0;
       }
     })
   }
@@ -56,8 +57,11 @@ class Game{
   }
 
   _drawPlayer() {
-    // this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
-    this.player._animatePlayerRun();
+    if (this.player.isFly) {
+      this.player._animatePlayerJump();
+    } else {
+      this.player._animatePlayerRun();
+    }
   }
 
   _drawZappers() {
