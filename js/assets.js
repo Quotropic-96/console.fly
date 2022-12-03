@@ -78,3 +78,21 @@ const playerFall1 = new Image();
 playerFall1.src = '../assets/player/fall_1.png';
 
 const playerFall = [playerFall0, playerFall1];
+
+// Missile
+const missile0 = new Image();
+missile0.src = '../assets/missile/missile_0.png';
+
+const missile1 = new Image();
+missile1.src = '../assets/missile/missile_1.png';
+
+const missile2 = new Image();
+missile2.src = '../assets/missile/missile_2.png';
+
+const missile3 = new Image();
+missile3.src = '../assets/missile/missile_3.png';
+
+const missile4 = new Image();
+missile4.src = '../assets/missile/missile_4.png';
+
+missileMoveLeft = [missile0, missile1, missile2, missile3, missile4];

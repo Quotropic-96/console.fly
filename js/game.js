@@ -49,7 +49,7 @@ class Game{
 
   _generateMissiles() {
     this.generateMissilesInterval = setInterval(() => {
-      const newMissile = new Missile(1000, this.player.y, 50, 50);
+      const newMissile = new Missile(1000, this.player.y, 50, 50, missileMoveLeft, this.ctx);
       newMissile._alertPlayer();
       newMissile._computeSpeed(this.dt);
       this.missiles.push(newMissile);
@@ -79,9 +79,7 @@ class Game{
 
   _drawMissiles() {
     this.missiles.forEach(missile => {
-      this.ctx.fillStyle = missile.color;
-      this.ctx.fillRect(missile.x, missile.y, missile.width, missile.height);
-      this.ctx.fillStyle = 'black';
+      missile._animateMoveLeft();
     })
   }
 
