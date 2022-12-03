@@ -98,4 +98,37 @@ missile4.src = '../assets/missile/missile_4.png';
 missileMoveLeft = [missile0, missile1, missile2, missile3, missile4];
 
 // Zappers
-const zap0 = new Image()
+const zap0 = new Image();
+zap0.src = '../assets/zapper/zap_0.png';
+
+const zap1 = new Image();
+zap1.src = '../assets/zapper/zap_1.png';
+
+const zap2 = new Image();
+zap2.src = '../assets/zapper/zap_2.png';
+
+const zap3 = new Image();
+zap3.src = '../assets/zapper/zap_3.png';
+
+const zap4 = new Image();
+zap4.src = '../assets/zapper/zap_4.png';
+
+const zap5 = new Image();
+zap5.src = '../assets/zapper/zap_5.png';
+
+const zap6 = new Image();
+zap6.src = '../assets/zapper/zap_6.png';
+
+const zap7 = new Image();
+zap7.src = '../assets/zapper/zap_7.png';
+
+const zap8 = new Image();
+zap8.src = '../assets/zapper/zap_8.png';
+
+const zap9 = new Image();
+zap9.src = '../assets/zapper/zap_9.png';
+
+const zap10 = new Image();
+zap10.src = '../assets/zapper/zap_10.png';
+
+const zapperAnimation = [zap0, zap1, zap2, zap3, zap4, zap5, zap6, zap7, zap8, zap9, zap10];

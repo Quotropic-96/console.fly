@@ -1,5 +1,5 @@
 class Zapper {
-    constructor() {
+    constructor(animation, ctx) {
         this.possibleOriginZones = [0, 1, 2];
         this.originZone = undefined;
         this.possibleTiers = [1, 2];
@@ -11,6 +11,9 @@ class Zapper {
         this.diagonalShift = 0;
         this.coordinates = [];
         this.speed = 10;
+        this.animation = animation;
+        this.animationCount = 0;    
+        this.ctx = ctx;
     }
 
     _defineOriginZone() {
@@ -90,6 +93,9 @@ class Zapper {
     }
 
     _animateVAndHZappers() {
-        
+        if (this.animationCount >= 110) {
+            this.animationCount = 0;
+        }
+        //this.ctx.drawImage(this.animation[Math.floor(this.animationCount/10)])
     }
 }
