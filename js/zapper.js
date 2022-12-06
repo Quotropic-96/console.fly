@@ -1,11 +1,11 @@
 class Zapper {
-    constructor(hAnimation, vAnimation, ctx) {
+    constructor(hAnimation, vAnimation, eBAnimation, ctx) {
         this.possibleOriginZones = [0, 1, 2];
         this.originZone = undefined;
         this.possibleTiers = [1, 2];
         this.tier = undefined;
         // this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
-        this.possiblePositions = ['horizontal', 'vertical'];
+        this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp'];
         this.position = undefined;
         this.deltaX = undefined;
         this.deltaY = undefined;
@@ -14,6 +14,7 @@ class Zapper {
         this.speed = 10;
         this.hAnimation = hAnimation;
         this.vAnimation = vAnimation;
+        this.eBAnimation = eBAnimation;
         this.animationCount = 0;    
         this.ctx = ctx;
     }
@@ -28,32 +29,33 @@ class Zapper {
 
     _definePosition() {
         this.position = this.possiblePositions[Math.floor(Math.random()*this.possiblePositions.length)];
+        this.position = 'diagonalUp';
     }
 
     _defineDeltas() {
         switch (this.position) {
             case 'horizontal':
-                this.deltaX = 190 * this.tier;
+                this.deltaX = 170 * this.tier;
                 this.deltaY = 50;
                 // Add this line so horizontal zapper appears in the middle of the zone
                 this.originZone += .5;
                 break;
             case 'vertical':
                 this.deltaX = 50;
-                this.deltaY = 190 * this.tier;
+                this.deltaY = 170 * this.tier;
                 break;
             case 'diagonalUp':
                 // Add this line so diagonal zapper appears with some margin
                 this.originZone += .1;
                 this.deltaX = 50;
-                this.deltaY = 190 * this.tier;
+                this.deltaY = 170 * this.tier;
                 this.diagonalShift = 100;
                 break;
             case 'diagonalDown':
                 // Add this line so diagonal zapper appears with some margin
                 this.originZone += .1;
                 this.deltaX = 50;
-                this.deltaY = 190 * this.tier;
+                this.deltaY = 170 * this.tier;
                 this.diagonalShift = -100;
                 break;
             default:
@@ -107,9 +109,23 @@ class Zapper {
                 this.ctx.drawImage(this.vAnimation[Math.floor(this.animationCount/10)], this.coordinates[0].x, this.coordinates[0].y, this.deltaX, this.deltaY);
                 this.animationCount++;
                 break;
+            case 'diagonalUp':
+                if (this.animationCount >= 70) {
+                    this.animationCount = 0;
+                }
+                let zapAnX0 = this.coordinates[0].x + this.deltaX * 0.1 * (-1) * this.diagonalShift/Math.abs(this.diagonalShift);
+                let zapAnY0 = this.coordinates[0].y;
+                let ZapAnDy = 50;
+                let ZapAnDx = - this.diagonalShift/10;
+                while (zapAnY0 < this.coordinates[0].y + this.deltaY) {
+                    this.ctx.drawImage(this.eBAnimation[Math.floor(this.animationCount/10)], zapAnX0, zapAnY0, this.deltaX, ZapAnDy);
+                    zapAnX0 += ZapAnDx;
+                    zapAnY0 += ZapAnDy;
+                }
+                this.animationCount++;
+                break;
             default:
                 break;
         }
-        //this.ctx.drawImage(this.animation[Math.floor(this.animationCount/10)])
     }
 }

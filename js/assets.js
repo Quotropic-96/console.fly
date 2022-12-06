@@ -170,3 +170,27 @@ const zapv10 = new Image();
 zapv10.src = '../assets/zapper/vertical/zap_10.png';
 
 const zapperVAnimation = [zapv0, zapv1, zapv2, zapv3, zapv4, zapv5, zapv6, zapv7, zapv8, zapv9, zapv10];
+
+// Diagonal
+const eb0 = new Image();
+eb0.src = '../assets/zapper/diagonal/eb_0.png';
+
+const eb1 = new Image();
+eb1.src = '../assets/zapper/diagonal/eb_1.png';
+
+const eb2 = new Image();
+eb2.src = '../assets/zapper/diagonal/eb_2.png';
+
+const eb3 = new Image();
+eb3.src = '../assets/zapper/diagonal/eb_3.png';
+
+const eb4 = new Image();
+eb4.src = '../assets/zapper/diagonal/eb_4.png';
+
+const eb5 = new Image();
+eb5.src = '../assets/zapper/diagonal/eb_5.png';
+
+const eb6 = new Image();
+eb6.src = '../assets/zapper/diagonal/eb_6.png';
+
+const eBAnimation = [eb0, eb1, eb2, eb3, eb4, eb5, eb6];

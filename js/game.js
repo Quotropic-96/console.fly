@@ -35,7 +35,7 @@ class Game{
   _generateZappers() {
     this.generateZappersInterval = setInterval(() => {
       if (Math.random()*this.zapperGenerationProbability < this.dt){
-        const newZapper = new Zapper(zapperHAnimation, zapperVAnimation, this.ctx);
+        const newZapper = new Zapper(zapperHAnimation, zapperVAnimation, eBAnimation, this.ctx);
         newZapper._defineOriginZone();
         newZapper._defineTier();
         newZapper._definePosition();
@@ -81,7 +81,6 @@ class Game{
 
   _drawBackground() {
     this.bgLayers.forEach(layer => layer._parallaxAnimate());
-    console.log(this.bgLayers[1].speed);
   }
 
   _drawFloor() {
@@ -193,7 +192,7 @@ class Game{
   _checkCollissions() {
     // Missile Collision
     this.missiles.forEach(missile => {
-      this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
+      // this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
     });
     // Zapper Collision
     this.zappers.forEach(zapper => {
