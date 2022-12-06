@@ -33,6 +33,6 @@ window.onload = function () {
           clearInterval(gameOverInt);
         }
       },1000);
-    },10000);
+    },5000);
   }
 }

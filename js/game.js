@@ -162,12 +162,11 @@ class Game{
     if (((playerX <= obstacleX && obstacleX <= playerX + playerWidth)||(playerX <= obstacleX + obstacleWidth && obstacleX + obstacleWidth <= playerX + playerWidth)) 
       && 
       ((playerY <= obstacleY && obstacleY <= playerY + playerHeight)||(playerY <= obstacleY + obstacleHeight && obstacleY + obstacleHeight <= playerY + playerHeight))) {
-        this.ctx.fillStyle = 'red';
+
         this.gameOver = true;
     } else if (((obstacleX <= playerX &&  playerX <= obstacleX + obstacleWidth)||(obstacleX <= playerX + playerWidth && playerX + playerWidth <= obstacleX + obstacleWidth)) 
       && 
       ((obstacleY <= playerY && playerY <= obstacleY + obstacleHeight)||(obstacleY <=  playerY + playerHeight && playerY + playerHeight <= obstacleY + obstacleHeight))) {
-        this.ctx.fillStyle = 'red';
         this.gameOver = true;
     }
   }

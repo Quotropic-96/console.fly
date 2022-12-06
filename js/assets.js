@@ -219,3 +219,10 @@ const gameMusic = '../assets/sound/songs/Game0.m4a';
 
 const endMusic = '../assets/sound/songs/EndGame0.m4a';
 
+// Sound Effects
+const bangAudio = new Audio('../assets/sound/sound_effects/bang.m4a');
+
+const jumpAudio = new Audio('../assets/sound/sound_effects/jump.m4a');
+
+const deadAudio = new Audio('../assets/sound/sound_effects/dead.wav');
+
