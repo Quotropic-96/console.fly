@@ -16,12 +16,13 @@ bgImg3.src = '../assets/bg/bg_3.png';
 const img = new Image();
 img.src = '../assets/player/fall_0.png';
 
-setTimeout(() => {
-    //ctx.save();
-    ctx.rotate(Math.PI);
-    ctx.drawImage(img,0,0,1000,600);
-    //ctx.restore();
-},10000);
+const testImg = new Image();
+testImg.src = 'testImg.png';
+
+window.onload = function () {
+    ctx.drawImage(testImg, 100, 100, 200, 200);
+    ctx.drawImage(img,0, 0, 200, 200);
+}
 
 // function _parallaxAnimation(img) {
 //     if (dx === 1000) {
