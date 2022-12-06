@@ -66,6 +66,17 @@ body {
   margin-right: 30px;
 }
 
+#instructions-page main div {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#instructions-page main img {
+  width: 100px;
+  height: auto;
+}
+
 #instructions-page main p {
   line-height: 1.5;
 }

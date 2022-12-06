@@ -79,6 +79,21 @@ playerFall1.src = '../assets/player/fall_1.png';
 
 const playerFall = [playerFall0, playerFall1];
 
+// Idle
+const playerIdle0 = new Image();
+playerIdle0.src = '../assets/player/idle_0.png';
+
+const playerIdle1 = new Image();
+playerIdle1.src = '../assets/player/idle_1.png';
+
+const playerIdle2 = new Image();
+playerIdle2.src = '../assets/player/idle_2.png';
+
+const playerIdle3 = new Image();
+playerIdle3.src = '../assets/player/idle_3.png';
+
+const playerIdle = [playerIdle0, playerIdle1, playerIdle2, playerIdle3];
+
 // Missile
 const missile0 = new Image();
 missile0.src = '../assets/missile/missile_0.png';
@@ -194,3 +209,13 @@ const eb6 = new Image();
 eb6.src = '../assets/zapper/diagonal/eb_6.png';
 
 const eBAnimation = [eb0, eb1, eb2, eb3, eb4, eb5, eb6];
+
+// Music
+const introMusic = '../assets/sound/songs/Intro0.m4a';
+
+const instructionsMusic = '../assets/sound/songs/Instructions0.m4a';
+
+const gameMusic = '../assets/sound/songs/Game0.m4a';
+
+const endMusic = '../assets/sound/songs/EndGame0.m4a';
+

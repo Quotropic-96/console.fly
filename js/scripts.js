@@ -10,21 +10,29 @@ window.onload = function () {
   const resultMeters = document.getElementById('result-number');
   
   startButton.onclick = function () {
+    let audio = createSound(instructionsMusic);
+    playSong(audio);
     startPage.style = "display: none";
     instructionsPage.classList.remove('hidden');
     setTimeout(() => {
+      stopSong(audio);
+      audio = createSound(gameMusic);
+      playSong(audio);
       instructionsPage.classList.add('hidden');
       gamePage.classList.remove('hidden');
       const game = new Game(ctx, meters);
       game.start();
       gameOverInt = setInterval(() => {
         if(game.gameOver) {
+          stopSong(audio);
+          audio = createSound(endMusic);
+          playSong(audio);
           gamePage.classList.add('hidden');
           losePage.classList.remove('hidden');
           resultMeters.innerHTML = `${Math.round(game.meters)}`;
           clearInterval(gameOverInt);
         }
       },1000);
-    },1000);
+    },10000);
   }
 }
