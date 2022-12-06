@@ -29,7 +29,7 @@ class Game{
         this.player.isFly = false;
         this.player.jumpCount = 0;
       }
-    })
+    });
   }
 
   _generateZappers() {
