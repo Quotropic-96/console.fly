@@ -71,7 +71,24 @@ body {
 }
 
 #lose-page {
+  background-image: url('../assets/pages/end_bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#lose-page main {
+  height: 100%;
   color: #EDD5C4;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+#lose-page #result {
+  align-self: flex-end;
+  margin-bottom: 70px;
 }
 
 canvas {
@@ -89,6 +106,7 @@ canvas {
   flex-direction: column;
   top: 40px;
   left: 50px;
+  color: #EDD5C4;
 }
 
 /* Auxiliar classes */

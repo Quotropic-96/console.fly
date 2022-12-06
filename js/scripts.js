@@ -22,6 +22,6 @@ window.onload = function () {
           losePage.classList.remove('hidden');
         }
       },1000);
-    },5000);
+    },1000);
   }
 }
