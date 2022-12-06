@@ -223,11 +223,6 @@ class Game{
     this.bgFloor.isFreeze = true;
   }
 
-  _drawLoseText() {
-    this.ctx.font = "30px Imapct";
-    this.ctx.fillText('You Loose Sucker!', 400, 200);
-  } 
-
   _update() {
     this._cleanArrays();
     this._moveAll();
@@ -254,7 +249,6 @@ class Game{
   _checkGameOver() {
     if (this.gameOver) {
       this._freezeGame();
-      this._drawLoseText();
       clearInterval(this.generateMissilesInterval);
       clearInterval(this.generateZappersInterval);
       clearInterval(this.computeMetersInterval);
