@@ -1,17 +1,19 @@
 class Zapper {
-    constructor(animation, ctx) {
+    constructor(hAnimation, vAnimation, ctx) {
         this.possibleOriginZones = [0, 1, 2];
         this.originZone = undefined;
         this.possibleTiers = [1, 2];
         this.tier = undefined;
-        this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
+        // this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
+        this.possiblePositions = ['horizontal', 'vertical'];
         this.position = undefined;
         this.deltaX = undefined;
         this.deltaY = undefined;
         this.diagonalShift = 0;
         this.coordinates = [];
         this.speed = 10;
-        this.animation = animation;
+        this.hAnimation = hAnimation;
+        this.vAnimation = vAnimation;
         this.animationCount = 0;    
         this.ctx = ctx;
     }
@@ -98,10 +100,13 @@ class Zapper {
         }
         switch (this.position) {
             case 'horizontal':
-                this.ctx.drawImage(this.animation[Math.floor(this.animationCount/10)], this.coordinates[0].x, this.coordinates[0].y, this.deltaX, this.deltaY);
+                this.ctx.drawImage(this.hAnimation[Math.floor(this.animationCount/10)], this.coordinates[0].x, this.coordinates[0].y, this.deltaX, this.deltaY);
                 this.animationCount++;
                 break;
-        
+            case 'vertical':
+                this.ctx.drawImage(this.vAnimation[Math.floor(this.animationCount/10)], this.coordinates[0].x, this.coordinates[0].y, this.deltaX, this.deltaY);
+                this.animationCount++;
+                break;
             default:
                 break;
         }

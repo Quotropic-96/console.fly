@@ -98,37 +98,75 @@ missile4.src = '../assets/missile/missile_4.png';
 missileMoveLeft = [missile0, missile1, missile2, missile3, missile4];
 
 // Zappers
-const zap0 = new Image();
-zap0.src = '../assets/zapper/zap_0.png';
+// Horizontal
+const zaph0 = new Image();
+zaph0.src = '../assets/zapper/horizontal/zap_0.png';
 
-const zap1 = new Image();
-zap1.src = '../assets/zapper/zap_1.png';
+const zaph1 = new Image();
+zaph1.src = '../assets/zapper/horizontal/zap_1.png';
 
-const zap2 = new Image();
-zap2.src = '../assets/zapper/zap_2.png';
+const zaph2 = new Image();
+zaph2.src = '../assets/zapper/horizontal/zap_2.png';
 
-const zap3 = new Image();
-zap3.src = '../assets/zapper/zap_3.png';
+const zaph3 = new Image();
+zaph3.src = '../assets/zapper/horizontal/zap_3.png';
 
-const zap4 = new Image();
-zap4.src = '../assets/zapper/zap_4.png';
+const zaph4 = new Image();
+zaph4.src = '../assets/zapper/horizontal/zap_4.png';
 
-const zap5 = new Image();
-zap5.src = '../assets/zapper/zap_5.png';
+const zaph5 = new Image();
+zaph5.src = '../assets/zapper/horizontal/zap_5.png';
 
-const zap6 = new Image();
-zap6.src = '../assets/zapper/zap_6.png';
+const zaph6 = new Image();
+zaph6.src = '../assets/zapper/horizontal/zap_6.png';
 
-const zap7 = new Image();
-zap7.src = '../assets/zapper/zap_7.png';
+const zaph7 = new Image();
+zaph7.src = '../assets/zapper/horizontal/zap_7.png';
 
-const zap8 = new Image();
-zap8.src = '../assets/zapper/zap_8.png';
+const zaph8 = new Image();
+zaph8.src = '../assets/zapper/horizontal/zap_8.png';
 
-const zap9 = new Image();
-zap9.src = '../assets/zapper/zap_9.png';
+const zaph9 = new Image();
+zaph9.src = '../assets/zapper/horizontal/zap_9.png';
 
-const zap10 = new Image();
-zap10.src = '../assets/zapper/zap_10.png';
+const zaph10 = new Image();
+zaph10.src = '../assets/zapper/horizontal/zap_10.png';
 
-const zapperAnimation = [zap0, zap1, zap2, zap3, zap4, zap5, zap6, zap7, zap8, zap9, zap10];
+const zapperHAnimation = [zaph0, zaph1, zaph2, zaph3, zaph4, zaph5, zaph6, zaph7, zaph8, zaph9, zaph10];
+
+// Vertical
+
+const zapv0 = new Image();
+zapv0.src = '../assets/zapper/vertical/zap_0.png';
+
+const zapv1 = new Image();
+zapv1.src = '../assets/zapper/vertical/zap_1.png';
+
+const zapv2 = new Image();
+zapv2.src = '../assets/zapper/vertical/zap_2.png';
+
+const zapv3 = new Image();
+zapv3.src = '../assets/zapper/vertical/zap_3.png';
+
+const zapv4 = new Image();
+zapv4.src = '../assets/zapper/vertical/zap_4.png';
+
+const zapv5 = new Image();
+zapv5.src = '../assets/zapper/vertical/zap_5.png';
+
+const zapv6 = new Image();
+zapv6.src = '../assets/zapper/vertical/zap_6.png';
+
+const zapv7 = new Image();
+zapv7.src = '../assets/zapper/vertical/zap_7.png';
+
+const zapv8 = new Image();
+zapv8.src = '../assets/zapper/vertical/zap_8.png';
+
+const zapv9 = new Image();
+zapv9.src = '../assets/zapper/vertical/zap_9.png';
+
+const zapv10 = new Image();
+zapv10.src = '../assets/zapper/vertical/zap_10.png';
+
+const zapperVAnimation = [zapv0, zapv1, zapv2, zapv3, zapv4, zapv5, zapv6, zapv7, zapv8, zapv9, zapv10];

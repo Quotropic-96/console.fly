@@ -17,13 +17,17 @@ bgImg3.src = '../assets/bg/bg_3.png';
 const testImg = new Image();
 testImg.src = 'testImg.png';
 
-window.onload = function () {
-    ctx.save(); // save current state
-    ctx.translate(100,100);
-    ctx.rotate(Math.PI/4); // rotate
-    ctx.drawImage(testImg, -100, -100, 200, 200);
-    ctx.restore();
-}
+// window.onload = function () {
+//     ctx.save(); 
+//     ctx.translate(100,100);
+//     ctx.rotate(Math.PI/2); 
+//     ctx.drawImage(testImg, -100, -100, 400, 50);
+//     ctx.restore();
+// }
+
+// ctx.fillRect(50,50,50,100);
+ctx.rotate(Math.PI/2);
+ctx.fillRect(-50,-50,50,100)
 
 // function _parallaxAnimation(img) {
 //     if (dx === 1000) {
