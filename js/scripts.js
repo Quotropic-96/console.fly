@@ -7,6 +7,7 @@ window.onload = function () {
   const instructionsPage = document.getElementById('instructions-page');
   const meters = document.getElementById('meter-number');
   const losePage = document.getElementById('lose-page');
+  const resultMeters = document.getElementById('result-number');
   
   startButton.onclick = function () {
     startPage.style = "display: none";
@@ -20,6 +21,7 @@ window.onload = function () {
         if(game.gameOver) {
           gamePage.classList.add('hidden');
           losePage.classList.remove('hidden');
+          resultMeters.innerHTML = `${Math.round(game.meters)}`;
         }
       },1000);
     },1000);
