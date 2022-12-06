@@ -25,7 +25,7 @@ class Zapper {
 
     _defineTier() {
         if (this.originZone === 2) {
-            this.tier = 1;
+            this.tier = .75;
         } else {
             this.tier = this.possibleTiers[Math.floor(Math.random()*this.possibleTiers.length)];
         }

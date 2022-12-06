@@ -192,7 +192,7 @@ class Game{
   _checkCollissions() {
     // Missile Collision
     this.missiles.forEach(missile => {
-      // this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
+      this._checkSquareHit(this.player.x, this.player.y, this.player.width, this.player.height, missile.x, missile.y, missile.width, missile.height);
     });
     // Zapper Collision
     this.zappers.forEach(zapper => {
