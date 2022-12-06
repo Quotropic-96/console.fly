@@ -83,6 +83,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  line-height: 1.5;
 }
 
 
@@ -107,6 +108,7 @@ canvas {
   top: 40px;
   left: 50px;
   color: #EDD5C4;
+  line-height: 1.5;
 }
 
 /* Auxiliar classes */

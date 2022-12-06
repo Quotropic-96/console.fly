@@ -17,11 +17,12 @@ window.onload = function () {
       gamePage.classList.remove('hidden');
       const game = new Game(ctx, meters);
       game.start();
-      setInterval(() => {
+      gameOverInt = setInterval(() => {
         if(game.gameOver) {
           gamePage.classList.add('hidden');
           losePage.classList.remove('hidden');
           resultMeters.innerHTML = `${Math.round(game.meters)}`;
+          clearInterval(gameOverInt);
         }
       },1000);
     },1000);
