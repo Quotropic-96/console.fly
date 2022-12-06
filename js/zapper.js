@@ -92,9 +92,18 @@ class Zapper {
         this.speed += Math.round(dt/500);
     }
 
-    _animateVAndHZappers() {
+    _animateZapper() {
         if (this.animationCount >= 110) {
             this.animationCount = 0;
+        }
+        switch (this.position) {
+            case 'horizontal':
+                this.ctx.drawImage(this.animation[Math.floor(this.animationCount/10)], this.coordinates[0].x, this.coordinates[0].y, this.deltaX, this.deltaY);
+                this.animationCount++;
+                break;
+        
+            default:
+                break;
         }
         //this.ctx.drawImage(this.animation[Math.floor(this.animationCount/10)])
     }

@@ -35,7 +35,7 @@ class Game{
   _generateZappers() {
     this.generateZappersInterval = setInterval(() => {
       if (Math.random()*this.zapperGenerationProbability < this.dt){
-        const newZapper = new Zapper();
+        const newZapper = new Zapper(zapperAnimation, this.ctx);
         newZapper._defineOriginZone();
         newZapper._defineTier();
         newZapper._definePosition();
@@ -69,11 +69,13 @@ class Game{
 
   _drawZappers() {
     this.zappers.forEach(zapper => {
+      
       this.ctx.beginPath();
       this.ctx.moveTo(zapper.coordinates[0].x, zapper.coordinates[0].y);
       zapper.coordinates.forEach(point => this.ctx.lineTo(point.x,point.y));
       this.ctx.fill();
       this.ctx.closePath();
+      zapper._animateZapper();
     });
   }
 

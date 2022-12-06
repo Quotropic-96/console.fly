@@ -13,15 +13,16 @@ bgImg2.src = '../assets/bg/bg_2.png';
 const bgImg3 = new Image();
 bgImg3.src = '../assets/bg/bg_3.png';
 
-const img = new Image();
-img.src = '../assets/player/fall_0.png';
 
 const testImg = new Image();
 testImg.src = 'testImg.png';
 
 window.onload = function () {
-    ctx.drawImage(testImg, 100, 100, 200, 200);
-    ctx.drawImage(img,0, 0, 200, 200);
+    ctx.save(); // save current state
+    ctx.translate(100,100);
+    ctx.rotate(Math.PI/4); // rotate
+    ctx.drawImage(testImg, -100, -100, 200, 200);
+    ctx.restore();
 }
 
 // function _parallaxAnimation(img) {
