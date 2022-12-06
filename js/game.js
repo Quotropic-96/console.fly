@@ -219,6 +219,7 @@ class Game{
     this.missiles.forEach(missile => missile.speed = 0);
     this.zappers.forEach(zapper => zapper.speed = 0);
     this.bgLayers.forEach(layer => layer.isFreeze = true);
+    this.player.isFall = true;
     this.bgFloor.isFreeze = true;
   }
 
