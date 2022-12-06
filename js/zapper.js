@@ -4,8 +4,8 @@ class Zapper {
         this.originZone = undefined;
         this.possibleTiers = [1, 2];
         this.tier = undefined;
-        // this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
-        this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp'];
+        this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp', 'diagonalDown'];
+        // this.possiblePositions = ['horizontal', 'vertical', 'diagonalUp'];
         this.position = undefined;
         this.deltaX = undefined;
         this.deltaY = undefined;
@@ -24,12 +24,15 @@ class Zapper {
     }
 
     _defineTier() {
-        this.tier = this.possibleTiers[Math.floor(Math.random()*this.possibleTiers.length)];
+        if (this.originZone === 2) {
+            this.tier = 1;
+        } else {
+            this.tier = this.possibleTiers[Math.floor(Math.random()*this.possibleTiers.length)];
+        }
     }
 
     _definePosition() {
         this.position = this.possiblePositions[Math.floor(Math.random()*this.possiblePositions.length)];
-        this.position = 'diagonalUp';
     }
 
     _defineDeltas() {
@@ -49,14 +52,14 @@ class Zapper {
                 this.originZone += .1;
                 this.deltaX = 50;
                 this.deltaY = 170 * this.tier;
-                this.diagonalShift = 100;
+                this.diagonalShift = 150;
                 break;
             case 'diagonalDown':
                 // Add this line so diagonal zapper appears with some margin
                 this.originZone += .1;
                 this.deltaX = 50;
                 this.deltaY = 170 * this.tier;
-                this.diagonalShift = -100;
+                this.diagonalShift = -150;
                 break;
             default:
                 break;
@@ -110,6 +113,7 @@ class Zapper {
                 this.animationCount++;
                 break;
             case 'diagonalUp':
+            case 'diagonalDown':
                 if (this.animationCount >= 70) {
                     this.animationCount = 0;
                 }

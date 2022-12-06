@@ -180,7 +180,7 @@ class Game{
     // Split diagonal object into 10 small rectangles
     let x0 = obstacleX0 + deltaX * 0.1 * (-1) * diagonalShift/Math.abs(diagonalShift);
     let y0 = obstacleY0;
-    let dy = deltaY/10;
+    let dy = 50;
     let dx = - diagonalShift/10;
     while (y0 < obstacleY0 + deltaY) {
       this._checkSquareHit(playerX, playerY, playerWidth, playerHeight, x0, y0, deltaX, dy);
