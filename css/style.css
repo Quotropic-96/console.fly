@@ -59,7 +59,6 @@ body {
 #instructions-page main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   color: #EDD5C4;
   margin-top: 10px;
   margin-left: 30px;
@@ -70,6 +69,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px;
   margin-top: 50px;
 }
 
@@ -83,8 +83,8 @@ body {
   margin-bottom: 50px;
 }
 
-#instructions-page main p {
-  line-height: 1.5;
+#instructions-text p {
+  line-height: 1.9;
 }
 
 #lose-page {
