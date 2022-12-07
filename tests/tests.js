@@ -1,53 +1,33 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const startBtn = document.getElementById('start-btn');
+const playerName = 'new';
+const score = 63;
+localStorage.setItem(playerName, score);
+console.log(localStorage);
 
-const music = createSound(instructionsMusic);
-const instructionsAnimation = playerIdle;
-const txt = ['In the middle of the misty Red Mountains lived a young developer.','All his teachers had warned him to be mindful of the power of the console.','Then came the update...','Press SPACE BAR for console.fly()','He pressed it and unleashed the true power of the console.','How far will he get?'];
-
-
-startBtn.onclick = function () {
-    playSong(music);
-    animateCharacter();
-    typingEffect();
-}
-
-let letterIdx = 0;
-let lineIdx = 0;
-const txtDiv = document.getElementById('instructions-text');
-
-function typingEffect() {
-    let p = document.createElement('p');
-    p.setAttribute("id", `${lineIdx}`);
-    txtDiv.appendChild(p);
-    typingLine();
-    if (lineIdx < txt.length-1) {
-        setTimeout(() => {
-            lineIdx++;
-            letterIdx = 0;
-
-            typingEffect();
-        },3000);
+let maxSpeed = {
+    car: 300, 
+    bike: 60, 
+    motorbike: 200, 
+    airplane: 1000,
+    helicopter: 400, 
+    rocket: 8 * 60 * 60
+};
+let bestPlayers = [];
+for (var player in localStorage) {
+    if (typeof localStorage[player] === 'string') {
+        bestPlayers.push([player, localStorage[player]]);
     }
 }
 
-function typingLine() {
-    if (letterIdx < txt[lineIdx].length) {
-        const txtId = document.getElementById(`${lineIdx}`).innerHTML += txt[lineIdx].charAt(letterIdx);
-        letterIdx++;
-        setTimeout(typingLine, 30);
-    }
-}
+bestPlayers.sort(function(a, b) {
+    return b[1] - a[1];
+});
 
-let animationCount = 0
+const table = document.getElementById('score-table');
 
-function animateCharacter() {
-    if (animationCount >= instructionsAnimation.length) {
-        animationCount = 0;
+let tableRow = ''
+bestPlayers.forEach((run, position) => {
+    if (position <= 2) {
+        tableRow = `<tr><td>${run[0]}</td><td>${run[1]}</td></tr>`;
+        table.innerHTML += tableRow;
     }
-    ctx.clearRect(0,0,150,200);
-    ctx.drawImage(instructionsAnimation[animationCount],0,0,150,200);
-    animationCount++;
-    setTimeout(animateCharacter,500);
-}
+});
