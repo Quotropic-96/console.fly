@@ -2,7 +2,8 @@
 // const score = 63;
 // localStorage.setItem(playerName, score);
 // console.log(localStorage);
-
+const numberTest = document.getElementById('test-num').innerHTML;
+console.log(numberTest);
 function updateScoreTable() {
     const nameInput = document.getElementById('name-input').value;
     

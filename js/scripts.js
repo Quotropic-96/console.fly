@@ -56,6 +56,7 @@ window.onload = function () {
         gamePage.classList.add('hidden');
         losePage.classList.remove('hidden');
         resultMeters.innerHTML = `${Math.round(game.meters)}`;
+        document.getElementById('send-name').disabled = false;
         clearInterval(gameOverInt);
       }
     },1000);

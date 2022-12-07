@@ -1,5 +1,7 @@
-function updateScoreTable(score) {
+function updateScoreTable() {
+    document.getElementById('send-name').disabled = true;
     const nameInput = document.getElementById('name-input').value;
+    const score = document.getElementById('result-number').innerHTML;
     localStorage.setItem(nameInput, score);
     
     let bestPlayers = [];
