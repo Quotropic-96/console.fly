@@ -41,10 +41,18 @@ body {
   width: 150px;
   height: auto;
   padding: 5px;
-  border: 1px solid rgba(237, 213, 196, .8);
+  background: none;
+  border: 0;
+  color: #EDD5C4;
+  /*border: 1px solid rgba(237, 213, 196, .8);
   border-radius: 5px;
-  background-color: (237, 213, 196, .8);
+  background-color: (237, 213, 196, .8);*/
   align-self: flex-end;
+}
+
+#start:hover {
+  background-color: #EDD5C4;
+  color: #231025;
 }
 
 #credits {
