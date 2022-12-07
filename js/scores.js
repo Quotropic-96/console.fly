@@ -1,10 +1,6 @@
-// const playerName = 'new';
-// const score = 63;
-// localStorage.setItem(playerName, score);
-// console.log(localStorage);
-
-function updateScoreTable() {
+function updateScoreTable(score) {
     const nameInput = document.getElementById('name-input').value;
+    localStorage.setItem(nameInput, score);
     
     let bestPlayers = [];
     for (var player in localStorage) {
@@ -27,5 +23,3 @@ function updateScoreTable() {
         }
     });
 }
-
-
