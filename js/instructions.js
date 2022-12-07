@@ -1,40 +1,45 @@
-class Instructions {
-    constructor(music, soundEffect, charAnimation, typingText, textId, ctx) {
-        this.music = createSound(music);
-        this.soundEffect = soundEffect;
-        this.charAnimation = charAnimation;
-        this.animationCount = 0;
-        this.typingText = typingText;
-        this.textId = textId;
-        this.ctx = ctx;
-        this.textIdx = 0;
-        this.textSpeed = 50;
-    }
+  // Instructions page set up
+  const instructionsAudio = createSound(instructionsMusic);
+  const instructionsAnimation = playerIdle;
+  const txt = ['In the middle of the misty Red Mountains lived a young developer.','All his teachers had warned him to be mindful of the power of the console.','Then came the upgrade...','Press SPACE BAR for console.fly()','He pressed it and unleashed the true power of the console.','How far will he get?'];
+  const txtDiv = document.getElementById('instructions-text');
+  const instructionsCanvas = document.getElementById('instructions-canvas');
+  const instructionsCtx = instructionsCanvas.getContext('2d');
+  let letterIdx = 0;
+  let lineIdx = 0;
+  let animationCount = 0;
 
-    _playMusic() {
-        playSong(this.music);
-    }
+  // Instructions page functions
+  function typingEffect() {
+    let p = document.createElement('p');
+    p.setAttribute("id", `${lineIdx}`);
+    txtDiv.appendChild(p);
+    typingLine();
+    if (lineIdx < txt.length-1) {
+        setTimeout(() => {
+            lineIdx++;
+            letterIdx = 0;
 
-    _stopMusic() {
-        stopSong(this.music);
+            typingEffect();
+        },3000);
     }
+  }
 
-    _animateCharacter() {
-        if (this.animationCount > 4) {
-            this.animationCount = 0;
-        }
-        this.ctx.drawImage(this.charAnimation[this.animationCount], 0, 0, 150, 200);
-        this.animationCount++;
-        setTimeout(this._animateCharacter, 50);
+  function typingLine() {
+    if (letterIdx < txt[lineIdx].length) {
+        const txtId = document.getElementById(`${lineIdx}`).innerHTML += txt[lineIdx].charAt(letterIdx);
+        letterIdx++;
+        setTimeout(typingLine, 30);
     }
+  }
 
-    _typingEffect() {
-        if (this.textIdx < this.typingText.length) {
-            document.getElementById(this.textId).innerHTML += this.typingText.chatAt(this.textIdx);
-            this.textIdx++;
-            setTimeout(this._typingEffect, this.speed);
-        }
-        this._playMusic();
+  function animateCharacter() {
+    if (animationCount >= instructionsAnimation.length) {
+        animationCount = 0;
     }
-}
+    instructionsCtx.clearRect(0,0,150,200);
+    instructionsCtx.drawImage(instructionsAnimation[animationCount],0,0,90,140);
+    animationCount++;
+    setTimeout(animateCharacter,500);
+  }
 

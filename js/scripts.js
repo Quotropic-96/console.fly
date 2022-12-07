@@ -9,60 +9,15 @@ window.onload = function () {
   const meters = document.getElementById('meter-number');
   const losePage = document.getElementById('lose-page');
   const resultMeters = document.getElementById('result-number');
-
-  // Instructions page set up
-  const instructionsAudio = createSound(instructionsMusic);
-  const instructionsAnimation = playerIdle;
-  const txt = ['In the middle of the misty Red Mountains lived a young developer.','All his teachers had warned him to be mindful of the power of the console.','Then came the update...','Press SPACE BAR for console.fly()','He pressed it and unleashed the true power of the console.','How far will he get?'];
-  const txtDiv = document.getElementById('instructions-text');
-  const instructionsCanvas = document.getElementById('instructions-canvas');
-  const instructionsCtx = instructionsCanvas.getContext('2d');
-  let letterIdx = 0;
-  let lineIdx = 0;
-  let animationCount = 0;
-
-  // Instructions page functions
-  function typingEffect() {
-    let p = document.createElement('p');
-    p.setAttribute("id", `${lineIdx}`);
-    txtDiv.appendChild(p);
-    typingLine();
-    if (lineIdx < txt.length-1) {
-        setTimeout(() => {
-            lineIdx++;
-            letterIdx = 0;
-
-            typingEffect();
-        },3000);
-    }
-  }
-
-  function typingLine() {
-    if (letterIdx < txt[lineIdx].length) {
-        const txtId = document.getElementById(`${lineIdx}`).innerHTML += txt[lineIdx].charAt(letterIdx);
-        letterIdx++;
-        setTimeout(typingLine, 30);
-    }
-  }
-
-  function animateCharacter() {
-    if (animationCount >= instructionsAnimation.length) {
-        animationCount = 0;
-    }
-    instructionsCtx.clearRect(0,0,150,200);
-    instructionsCtx.drawImage(instructionsAnimation[animationCount],0,0,90,140);
-    animationCount++;
-    setTimeout(animateCharacter,500);
-  }
+  const replayButton = document.getElementById('replay');
   
   // Main Loop
-
   startButton.onclick = function () {
     playSong(instructionsAudio);
     startPage.style = "display: none";
     instructionsPage.classList.remove('hidden');
-    animateCharacter();
-    typingEffect();
+    animateCharacter();                                 // Instructions page function
+    typingEffect();                                     // Instructions page function
     setTimeout(() => {
       stopSong(instructionsAudio);
       audio = createSound(gameMusic);
@@ -83,6 +38,26 @@ window.onload = function () {
         }
       },1000);
     },17100);
-    
+  }
+
+  replayButton.onclick = function () {
+    stopSong(audio);
+    audio = createSound(gameMusic);
+    playSong(audio);
+    losePage.classList.add('hidden');
+    gamePage.classList.remove('hidden');
+    const game = new Game(ctx, meters);
+    game.start();
+    gameOverInt = setInterval(() => {
+      if(game.gameOver) {
+        stopSong(audio);
+        audio = createSound(endMusic);
+        playSong(audio);
+        gamePage.classList.add('hidden');
+        losePage.classList.remove('hidden');
+        resultMeters.innerHTML = `${Math.round(game.meters)}`;
+        clearInterval(gameOverInt);
+      }
+    },1000);
   }
 }
