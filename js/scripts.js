@@ -57,6 +57,7 @@ window.onload = function () {
         losePage.classList.remove('hidden');
         resultMeters.innerHTML = `${Math.round(game.meters)}`;
         document.getElementById('send-name').disabled = false;
+        document.getElementById('score-table').innerHTML = '<tr><th>Name</th><th>Score</th></tr>';
         clearInterval(gameOverInt);
       }
     },1000);
