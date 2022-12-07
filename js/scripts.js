@@ -50,7 +50,7 @@ window.onload = function () {
         animationCount = 0;
     }
     instructionsCtx.clearRect(0,0,150,200);
-    instructionsCtx.drawImage(instructionsAnimation[animationCount],0,0,150,200);
+    instructionsCtx.drawImage(instructionsAnimation[animationCount],0,0,90,140);
     animationCount++;
     setTimeout(animateCharacter,500);
   }
@@ -82,7 +82,7 @@ window.onload = function () {
           clearInterval(gameOverInt);
         }
       },1000);
-    },5000);
+    },17100);
     
   }
 }

@@ -61,20 +61,26 @@ body {
   flex-direction: column;
   gap: 20px;
   color: #EDD5C4;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-left: 30px;
   margin-right: 30px;
 }
 
 #instructions-page main div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 50px;
 }
 
-#instructions-page main img {
-  width: 100px;
-  height: auto;
+#instructions-canvas {
+  display: block;
+  position: fixed;
+  bottom: 110px;
+  left: 350px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 #instructions-page main p {
