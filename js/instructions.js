@@ -25,6 +25,7 @@ class Instructions {
         }
         this.ctx.drawImage(this.charAnimation[this.animationCount], 0, 0, 150, 200);
         this.animationCount++;
+        setTimeout(this._animateCharacter, 50);
     }
 
     _typingEffect() {
@@ -33,6 +34,7 @@ class Instructions {
             this.textIdx++;
             setTimeout(this._typingEffect, this.speed);
         }
+        this._playMusic();
     }
 }
 
