@@ -103,6 +103,24 @@ body {
   line-height: 1.5;
 }
 
+#lose-page main div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#replay {
+  height: 30px;
+  padding: 0 5px;
+  background: none;
+  border: none;
+  color: #EDD5C4;
+  margin-left: 20px;
+}
+
+#replay:hover {
+  background-color: #EDD5C4;
+  color: #231025;
+}
 
 #lose-page #result {
   align-self: flex-end;
