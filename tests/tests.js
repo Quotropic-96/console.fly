@@ -1,37 +1,53 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const startBtn = document.getElementById('start-btn');
+
+const music = createSound(instructionsMusic);
+const instructionsAnimation = playerIdle;
+const txt = ['In the middle of the misty Red Mountains lived a young developer.','All his teachers had warned him to be mindful of the power of the console.','Then came the update...','Press SPACE BAR for console.fly()','He pressed it and unleashed the true power of the console.','How far will he get?'];
 
 
-window.onload = function () {
-    const newZapper = new Zapper(zapperHAnimation, zapperVAnimation, eBAnimation, ctx);
-    newZapper._defineOriginZone();
-    newZapper.originZone = 1;
-    newZapper._defineTier();
-    newZapper.tier = 2;
-    newZapper._definePosition();
-    newZapper.position = 'diagonalUp';
-    newZapper._defineDeltas();
-    newZapper._computeCoordinates();
-    newZapper._computeSpeed(100);
-    newZapper.coordinates.forEach(point => {
-        point.x -= 500;
-    });
-    newZapper._animateZapper();
-    // drawCollissionBox(newZapper.coordinates[0].x, newZapper.coordinates[0].y, newZapper.deltaX, newZapper.deltaY, newZapper.diagonalShift);
-    console.log(newZapper);
+startBtn.onclick = function () {
+    playSong(music);
+    animateCharacter();
+    typingEffect();
 }
 
-function drawCollissionBox(obstacleX0, obstacleY0, deltaX, deltaY, diagonalShift) {
-    let x0 = obstacleX0 + deltaX * 0.1 * (-1) * diagonalShift/Math.abs(diagonalShift);
-    let y0 = obstacleY0;
-    let dy = 50;
-    let dx = - diagonalShift/10;
-    while (y0 < obstacleY0 + deltaY) {
-        ctx.fillRect(x0, y0, deltaX, dy);
-        // this._checkSquareHit(playerX, playerY, playerWidth, playerHeight, x0, y0, deltaX, dy);
-        x0 += dx;
-        y0 += dy;
-      }
+let letterIdx = 0;
+let lineIdx = 0;
+const txtDiv = document.getElementById('instructions-text');
+
+function typingEffect() {
+    let p = document.createElement('p');
+    p.setAttribute("id", `${lineIdx}`);
+    txtDiv.appendChild(p);
+    typingLine();
+    if (lineIdx < txt.length-1) {
+        setTimeout(() => {
+            lineIdx++;
+            letterIdx = 0;
+
+            typingEffect();
+        },3000);
+    }
 }
 
+function typingLine() {
+    if (letterIdx < txt[lineIdx].length) {
+        const txtId = document.getElementById(`${lineIdx}`).innerHTML += txt[lineIdx].charAt(letterIdx);
+        letterIdx++;
+        setTimeout(typingLine, 30);
+    }
+}
 
+let animationCount = 0
+
+function animateCharacter() {
+    if (animationCount >= instructionsAnimation.length) {
+        animationCount = 0;
+    }
+    ctx.clearRect(0,0,150,200);
+    ctx.drawImage(instructionsAnimation[animationCount],0,0,150,200);
+    animationCount++;
+    setTimeout(animateCharacter,500);
+}

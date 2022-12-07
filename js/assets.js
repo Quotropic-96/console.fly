@@ -92,7 +92,8 @@ playerIdle2.src = '../assets/player/idle_2.png';
 const playerIdle3 = new Image();
 playerIdle3.src = '../assets/player/idle_3.png';
 
-const playerIdle = [playerIdle0, playerIdle1, playerIdle2, playerIdle3];
+const playerIdle = [playerIdle0, playerIdle3];
+
 
 // Missile
 const missile0 = new Image();
@@ -225,4 +226,6 @@ const bangAudio = new Audio('../assets/sound/sound_effects/bang.m4a');
 const jumpAudio = new Audio('../assets/sound/sound_effects/jump.m4a');
 
 const deadAudio = new Audio('../assets/sound/sound_effects/dead.wav');
+
+const typingAudio = new Audio('../assets/sound/sound_effects/typing.wav');
 
