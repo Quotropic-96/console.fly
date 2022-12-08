@@ -81,10 +81,10 @@ const playerFall = [playerFall0, playerFall1];
 
 // Idle
 const playerIdle0 = new Image();
-playerIdle0.src = '../assets/player/idle_0.png';
+playerIdle0.src = './assets/player/idle_0.png';
 
 const playerIdle3 = new Image();
-playerIdle3.src = '../assets/player/idle_3.png';
+playerIdle3.src = './assets/player/idle_3.png';
 
 const playerIdle = [playerIdle0, playerIdle3];
 
