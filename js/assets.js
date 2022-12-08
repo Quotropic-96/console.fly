@@ -227,5 +227,5 @@ const jumpAudio = new Audio('../assets/sound/sound_effects/jump.m4a');
 
 const deadAudio = new Audio('../assets/sound/sound_effects/dead.wav');
 
-const typingAudio = new Audio('../assets/sound/sound_effects/typing.wav');
+const typingAudio = '../assets/sound/sound_effects/typing.wav';
 

@@ -1,5 +1,6 @@
   // Instructions page set up
   const instructionsAudio = createSound(instructionsMusic);
+  const typeAudio = createSound(typingAudio);
   const instructionsAnimation = playerIdle;
   const txt = ['In the middle of the misty Red Mountains lived a young developer.','All his teachers had warned him to be mindful of the power of the console.','Then came the upgrade...','Press SPACE BAR for console.fly()','He pressed it and unleashed the true power of the console.','How far will he get?'];
   const txtDiv = document.getElementById('instructions-text');
@@ -14,12 +15,12 @@
     let p = document.createElement('p');
     p.setAttribute("id", `${lineIdx}`);
     txtDiv.appendChild(p);
+    playSong(typeAudio);
     typingLine();
     if (lineIdx < txt.length-1) {
         setTimeout(() => {
             lineIdx++;
             letterIdx = 0;
-
             typingEffect();
         },3000);
     }
@@ -30,6 +31,8 @@
         const txtId = document.getElementById(`${lineIdx}`).innerHTML += txt[lineIdx].charAt(letterIdx);
         letterIdx++;
         setTimeout(typingLine, 30);
+    } else {
+      stopSong(typeAudio);
     }
   }
 
