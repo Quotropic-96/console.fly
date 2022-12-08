@@ -83,12 +83,6 @@ const playerFall = [playerFall0, playerFall1];
 const playerIdle0 = new Image();
 playerIdle0.src = '../assets/player/idle_0.png';
 
-const playerIdle1 = new Image();
-playerIdle1.src = '../assets/player/idle_1.png';
-
-const playerIdle2 = new Image();
-playerIdle2.src = '../assets/player/idle_2.png';
-
 const playerIdle3 = new Image();
 playerIdle3.src = '../assets/player/idle_3.png';
 
@@ -212,8 +206,6 @@ eb6.src = '../assets/zapper/diagonal/eb_6.png';
 const eBAnimation = [eb0, eb1, eb2, eb3, eb4, eb5, eb6];
 
 // Music
-const introMusic = '../assets/sound/songs/Intro0.m4a';
-
 const instructionsMusic = '../assets/sound/songs/Instructions0.m4a';
 
 const gameMusic = '../assets/sound/songs/Game0.m4a';
@@ -221,11 +213,5 @@ const gameMusic = '../assets/sound/songs/Game0.m4a';
 const endMusic = '../assets/sound/songs/EndGame0.m4a';
 
 // Sound Effects
-const bangAudio = new Audio('../assets/sound/sound_effects/bang.m4a');
-
-const jumpAudio = new Audio('../assets/sound/sound_effects/jump.m4a');
-
-const deadAudio = new Audio('../assets/sound/sound_effects/dead.wav');
-
 const typingAudio = '../assets/sound/sound_effects/typing.wav';
 
