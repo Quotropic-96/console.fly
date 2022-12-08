@@ -76,4 +76,4 @@ The goal of the game is to get as far as possible.
 <!-- When you finish, add these links and commit -->
 
 - [Presentation slides](https://my.visme.co/view/mxw90rvj-console-fly-slides)
-- [Deployed game]()
+- [Deployed game](https://quotropic-96.github.io/console.fly/)
